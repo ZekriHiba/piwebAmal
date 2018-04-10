@@ -1,0 +1,243 @@
+{% extends "::layoutHome.html.twig" %}
+
+{% block titre %}AdoptionBundle:Adoption:ShowAnimalAdoption{% endblock %}
+
+{% block content %}
+    <div class="page-title grey">
+        <div class="container">
+            <div class="title-area pull-left">
+                <h2>Adoption <small>Best pets</small></h2>
+                <div class="bread">
+                    <ol class="breadcrumb">
+                        <li><a href="#">Home</a></li>
+                        <li class="active">Adoption</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="section white">
+        <div class="container">
+            <div class="row">
+                <div id="content" class="col-md-8 col-sm-12 col-xs-12">
+                    <div class="row">
+                        <div class="col-md-5 col-sm-5 col-xs-12">
+                            <div class="product-images">
+                                <a style="border-radius: 100%;width: 200px;height: 200px; padding: 40px" data-rel="prettyPhoto" href="{{ asset('client/upload/'~animal.image ) }}" title="">
+                                    <img class="img-polaroid" style="border-radius: 100%;width: 200px;height: 200px;" src="{{ asset('client/upload/'~animal.image ) }}" alt=""/>
+                                </a>
+                                <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                                <ul class="thumbnail">
+                                    <li> <a data-rel="prettyPhoto[gallery]" href="{{ asset('client/upload/28.png') }}" title=""><img class="img-thumbnail" src="{{ asset('client/upload/28.png') }}" alt=""/></a></li>
+                                    <li> <a data-rel="prettyPhoto[gallery]" href="{{ asset('client/upload/caniche2.png') }}" title=""><img style="width: 70%" class="img-thumbnail" src="{{ asset('client/upload/caniche2.png') }}" alt=""/></a></li>
+                                    <li> <a data-rel="prettyPhoto[gallery]" href="{{ asset('client/upload/25.png') }}" title=""><img class="img-thumbnail" src="{{ asset('client/upload/25.png') }}" alt=""/></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-7 col-sm-7 col-xs-16">
+                            <div class="shop-desc" id="sh">
+                                <h3>{{ animal.nickName }} </h3>
+                                <div class="rating">
+                                    <i class="fa fa-paw"></i>
+                                </div>
+                                <span>{{ animal.description }}</span><br>
+                                {% if user.id!= adoption.userId.id %}
+                                {% if r is empty %}
+                                    <a href="{{ path('_request_adoption',{'id':animal.idAnimal}) }}" class="btn btn-primary">Remplir formulaire</a>
+                                    {% endif %}
+                                    <div class="addwish">
+                                        {% if w is empty %}
+                                            <a href="{{ path('_add_wishlist',{'id':animal.idAnimal}) }}">
+                                                <i class="fa fa-heart-o"></i> Ajouter aux favoris</a>
+                                        {% else %}
+                                            <a href="{{ path('_delete_wishlist',{'id':animal.idAnimal}) }}">
+                                                <i style="color: red;" class="fa fa-heart"></i> Supprimer du favoris</a> {% endif %}
+                                    </div>
+                                {% endif %}
+                                <div class="shopmeta"><br>
+                                    <span><strong>Sous catégorie : </strong> <a href="#">{{ animal.sSpeciesId.name }} </a></span>
+                                    <span><strong>Sexe : </strong> <a href="#">{{ animal.gender }} </a></span>
+                                    <span><strong>Taile : </strong> <a href="#">{{ animal.size }} </a></span>
+                                    <span><strong>Poids : </strong> <a href="#">{{ animal.weight }} </a></span>
+                                    <span><strong>Age : </strong> <a href="#">{{ animal.age | date }} </a></span>
+                                    <br><br><br><p style="color: orange;" >Date de publication : </p><small>{{ adoption.dateAdoption | date }}</small>
+                                </div>
+                                <div style=" width: 900px; position:absolute;">{{ twitterButton() }}
+                                    {{ googleplusButton({'url':'https://lh3.googleusercontent.com/3.png'}) }}</div><br><br>
+                                <div style=" width: 900px; position:absolute;"> {{ pinterestButton() }}</div><br><br>
+                                <div id="facebook" style=" width: 900px; position:absolute;" data-href="{{ app.request.uri }}">{{ facebookButton() }}</div>
+                            </div><br><br>
+                        </div>
+                    </div>
+                    <hr class="invis">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="service-style-1">
+                                <div class="tabbed-widget">
+                                    <ul class="nav nav-tabs">
+                                        <li class="active"><a data-toggle="tab" href="#home">Conseils</a></li>
+                                        {% if user.id== adoption.userId.id %}
+                                        <li><a data-toggle="tab" href="#menu1">Demandes</a></li>
+                                        {% endif %}
+                                        <li><a data-toggle="tab" href="#menu2">Propriétaire</a></li>
+                                    </ul>
+                                    <div class="tab-content">
+                                        <div id="home" class="tab-pane fade in active">
+                                            <p><img src="{{ asset('client/upload/xservice_03.png.pagespeed.ic.VBaBmQNb0B.png') }}" class="alignleft" alt="">
+                                                Soyez patient. L'animal peut prendre du temps à socialiser. Dès ses premiers jours dans son nouvel environnement, il sera en phase d'adaptation. Ne vous inquiétez pas s'il cause des dégâts durant cette période. Il faut s'attendre et être prêts à ce que certains biens soient abîmés.</p>
+                                            <br>
+                                            <p>Temps, patience, compréhension l'aideront à s'apaiser. S'il est malpropre les premiers jours, ne soyez pas fâché, cela révèle sa détresse, il lui faut du temps pour s'adapter..  </p>
+                                        </div>
+                                        <div id="menu1" class="tab-pane fade">
+                                            <div id="reviews" class="feedbacks">
+                                                <div>
+                                                    <div class="well">
+                                                        {% set i=0 %}{% set j=0 %}
+                                                        {% for r in requests %}
+                                                            {% set j=j+1 %}
+                                                            {% if j%2!=0 %}
+                                                                {% set k=r.idUser %}
+                                                                {% for r2 in requests %}
+                                                                    {% set i=i+1 %}
+                                                                    {% if i%2==0 and k ==r2.id %}
+                                                                        <div class="media">
+                                                                        <div class="media-left">
+                                                                            <a href="#">
+                                                                                <img class="media-object" src="{{ asset('client/upload/xstudent_01.png.pagespeed.ic.756JwMcqdq.png') }}" alt="Generic placeholder image">
+                                                                            </a>
+                                                                        </div>
+                                                                        <div class="media-body">
+                                                                        <h4 class="media-heading">{{ r2.username }}</h4>{% endif %}{% endfor %}
+                                                                <div class="time-comment clearfix">
+                                                                    <small class="pull-left"> {{ r.dateRequest |date }}</small>
+                                                                    <form method="POST" action="{{ path('_valider_request_adoption',{'id':r.idAdoptionAnimal }) }}">
+                                                                        <button  type="submit" name="save" class="pull-right btn btn-primary btn-xs">Valider</button>
+                                                                    </form>
+                                                                </div>
+                                                                <p> {% if r.raiser==0 %} Je suis éleveur. {% else %} Je ne suis pas éleveur. {% endif %}
+                                                                    {% if r.breed==0 %} Je connais cette race. {% else %} Je ne connais pas cette race. {% endif %}
+                                                                    {% if r.local=='Maison' %} J'habite dans une maison {% else %} J'habite dans un appartement {% endif %}
+                                                                    {% if r.garden==0 %} avec un jardin. {% else %} mais pas de jardin. {% endif %}
+                                                                    {% if r.space==0 %} J'ai suffisamment d'espace pour que les chiots puissent jouer. {% else %} Je n'ai pas suffisamment d'espace. {% endif %}
+                                                                    {% if r.place=='Extérieur' %} Il sera à l'extérieur {% else %} Il vivra avec moi  {% endif %}
+                                                                    {% if r.carry=='Accompagne' %} et il sera accompagné. {% else %} et souvent seul.  {% endif %}
+                                                                    {% if r.neighbour==0 %} Les voisins sont tolérants. {% else %} Malheureusement les voisins ne sont pas tolérants. {% endif %}
+                                                                    {% if r.child==0 %} Sinon, oui j'ai des enfants {% else %} Sinon j'ai pas d'enfants {% endif %}
+                                                                    {% if r.familly==0 %} et ma famille veux avoir un animal . {% else %} mais ma famille n'accepte pas les animeaux. {% endif %}
+                                                                    {% if r.time==0 %} J'ai pleinement le temps de bien prendre soin de lui. {% else %} Je suis toujours occupé(e). {% endif %}
+                                                                    {% if r.engagement==0 %} Je suis prêt(e) à un tel engagement. {% else %} Je doute d'être vraiment prêt(e) à un tel engagement.. {% endif %}
+                                                                    {% if r.charges==0 %} J'assume tous les frais soit pour le soigner ou de sa nourriture.{% endif %}
+                                                                </p>
+                                                                <p style="color:red;">{% if r.child==0 %} Je suis toujours prêt(e) à adopter cet animal {% endif %}</p>
+                                                                <p>{{ r.description }}</p>
+                                                                </div>
+                                                                </div>{% endif %}
+                                                        {% endfor %}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="menu2" class="tab-pane fade">
+                                            <p><img style="border-radius: 100% ;height: 100px;width: 100px" src="{{ asset('client/upload/xstudent_02.png.pagespeed.ic.y-PM-y4pVj.jpg') }}" class="alignleft" alt="">
+                                                {{ adoption.userId.username }} a déconnecté {{ adoption.userId.lastlogin | date }}</p>
+                                            <br>
+                                            <p> Veuillez contacter le propriétaire de cet animal : {{ adoption.userId.email }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="invis">
+                    <div class="row module-wrapper text-center">
+                        <div class="col-md-4 col-sm-6 wdtShop grid cs-style-3">
+                            <div class="img-wrap">
+                                <figure>
+                                    <img alt="" src="{{ asset('client/upload/xshop_04.jpg.pagespeed.ic.SDayx1DpGB.jpg') }}" class="img-responsive">
+                                    <figcaption>
+                                        <p><strong>$43.00</strong></p>
+                                        <a class="blogging" title="Add to Cart" href="shop-single.html"><i class="fa fa-shopping-cart"></i></a>
+                                    </figcaption>
+                                </figure>
+                            </div>
+                            <h4><a href="shop-single.html" title="">Beautiful Cat Bed</a></h4>
+                            <div class="rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-6 wdtShop grid cs-style-3">
+                            <div class="img-wrap">
+                                <figure>
+                                    <img alt="" src="{{ asset('client/upload/xshop_02.jpg.pagespeed.ic.c2WuvOxE4K.jpg') }}" class="img-responsive">
+                                    <figcaption>
+                                        <p><strong>$12.00</strong></p>
+                                        <a class="blogging" title="Add to Cart" href="shop-single.html"><i class="fa fa-shopping-cart"></i></a>
+                                    </figcaption>
+                                </figure>
+                            </div>
+                            <h4><a href="shop-single.html" title="">Prof Cat House</a></h4>
+                            <div class="rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-6 wdtShop grid cs-style-3">
+                            <div class="img-wrap">
+                                <figure>
+                                    <img alt="" src="{{ asset('client/upload/xshop_03.jpg.pagespeed.ic.IONcGIjklL.jpg') }}" class="img-responsive">
+                                    <figcaption>
+                                        <p><strong>$55.00</strong></p>
+                                        <a class="blogging" title="Add to Cart" href="shop-single.html"><i class="fa fa-shopping-cart"></i></a>
+                                    </figcaption>
+                                </figure>
+                            </div>
+                            <h4><a href="shop-single.html" title="">Gorgeous dog house</a></h4>
+                            <div class="rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="sidebar" class="col-md-4 col-sm-12 col-xs-12">
+                    <div class="widget">
+                        <div class="widget-title">
+                            <h4>Recent posts</h4>
+                            <hr>
+                        </div>
+                        <div class="recent-post-widget">
+                            <ul class="recent-posts">
+                                <li>
+                                    <p><a title=""><img src="{{ asset('client/upload/xblog_05.jpg.pagespeed.ic.xii_pYKsfM.jpg') }}" alt="" class="alignleft">How to find best dog food?</a></p>
+                                    <span>12 May 2014</span>
+                                </li>
+                                <li>
+                                    <p><a  title=""><img src="{{ asset('client/upload/xblog_04.jpg.pagespeed.ic.QCtoVlXGPf.jpg') }}" alt="" class="alignleft">What About Your Dog Toths?</a></p>
+                                    <span>06 May 2014</span>
+                                </li>
+                                <li>
+                                    <p><a  title=""><img src="{{ asset('client/upload/xblog_03.jpg.pagespeed.ic.mNAEK9nADS.jpg') }}" alt="" class="alignleft">We Will Help You About Your Pet Health</a></p>
+                                    <span>06 May 2014</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    </div>
+    <script src="{{ asset('jquery-3.2.1.min.js') }}"></script>
+
+{% endblock %}

@@ -1,0 +1,61 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% if error %}
+    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+{% endif %}
+
+
+<section id="comingsoon" class="fullscreen paralbackground parallax" style="background-image:url({{ asset('Client/upload/xparallax_01.jpg.pagespeed.ic.bbBOmU960x.jpg') }})" data-img-width="1922" data-img-height="795" data-diff="100">
+    <div class="js-height-full">
+        <div class="home-text-wrapper container">
+            <div class="home-message">
+
+
+                <div class="newsletter">
+                    <form class="form-inline" action="{{ path("fos_user_security_check") }}" method="post">
+                        {% if csrf_token %}
+                            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                        {% endif %}
+                        <div class="form-group">
+                            <label style="color: white" for="username">{{ 'security.login.username'|trans }}</label>
+                            <br>
+                            <input class="form-control"  type="text" id="username" name="_username" value="{{ last_username }}" required="required" autocomplete="username" />
+                            <br><br>
+                            <label style="color: white" for="password">{{ 'security.login.password'|trans }}</label>
+                            <br>
+                            <input class="form-control"  type="password" id="password" name="_password" required="required" autocomplete="current-password" />
+                            <br><br>
+                            <a style="color: #7aa6da" href="{{ path("fos_user_resetting_request") }}">Mot de passe perdu?</a>
+                            <br><br>
+                            <hr style="color: white">
+                            <br>
+                            <label style="color: white">Vous n'avez pas encore de compte ? </label>
+                           <a style="color: #7aa6da" href="{{ path("fos_user_registration_register") }}">Créez-en un !</a>
+
+
+                            <br><br>
+                            <input class="btn btn-normal btn-primary" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}"  />
+
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="{{ asset('Client/js/jquery.min.js.pagespeed.jm.J-8M9bCq0j.js') }}"></script>
+<script src="{{ asset('Client/js/bootstrap.js%2bretina.js%2bwow.js.pagespeed.jc.isTtwS3BRA.js') }}"></script><script>eval(mod_pagespeed_QVjN9VLU9A);</script>
+<script>eval(mod_pagespeed_MEsUxamUni);</script>
+<script>eval(mod_pagespeed_0bkPwSHufl);</script>
+<script src="{{ asset('Client/js/jquery.simple-text-rotator.js%2bparallax.js%2btouch.js%2bcarousel.js.pagespeed.jc.HG-aMDAZDl.js') }}"></script><script>eval(mod_pagespeed_07fmU$$RNq);</script>
+<script>eval(mod_pagespeed_XKKesQfpp0);</script>
+<script>eval(mod_pagespeed_z83SFsIgz$);</script>
+<script>eval(mod_pagespeed_WBv_OkcQEu);</script>
+<script>//<![CDATA[
+    (function($){"use strict";$(window).load(function(){$('#loader').delay(300).fadeOut('slow');$('#loader-container').delay(200).fadeOut('slow');$('body').delay(300).css({'overflow':'visible'});})
+        new WOW({boxClass:'wow',animateClass:'animated',offset:0,mobile:true,live:true}).init();$('body').tooltip({selector:"[data-tooltip=tooltip]",container:"body"});$('#owl-team').owlCarousel({loop:true,margin:30,nav:true,dots:false,responsive:{0:{items:1},600:{items:2},1000:{items:4}}})
+        $(".rotate").textrotator({animation:"fade",speed:1000});function toggleChevron(e){$(e.target).prev('.panel-heading').find("i.indicator").toggleClass('fa-minus fa-plus');}$('#accordion').bind('hidden.bs.collapse',toggleChevron);$('#accordion').bind('shown.bs.collapse',toggleChevron);$(".js-height-full").height($(window).height());$(".js-height-parent").each(function(){$(this).height($(this).parent().first().height());});$('#quote-carousel').carousel({pause:true,interval:4000,});})(jQuery);
+    //]]></script>
+
+

@@ -1,0 +1,111 @@
+{% extends "::layoutHome.html.twig" %}
+
+{% block titre %}ShopBundle:Product:ShowProduct{% endblock %}
+
+{% block content %}
+
+
+    <div class="page-title grey">
+        <div class="container">
+            <div class="title-area pull-left">
+                <h2>Shop <small>Best pet supplies, materials and eats</small></h2>
+                <div class="bread">
+                    <ol class="breadcrumb">
+                        <li><a href="#">Home</a></li>
+                        <li class="active">Shop</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="search pull-right">
+                <form>
+                    <div class="input-group">
+                        <input class="form-control" id="search" name="s" type="search" placeholder=" Search... ">
+                        <span class="input-group-btn">
+<button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
+</span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <section class="section white">
+        <div class="container">
+            <div class="shop-top clearfix">
+                <div class="title-area pull-left">
+                    <p>Showing 1–9 of 23 results</p>
+                </div>
+                <div class="pull-right">
+                    <select class="selectpicker" data-style="btn-primary">
+                        <option value="menu_order">Default sorting</option>
+                        <option value="popularity">Sort by popularity</option>
+                        <option value="rating">Sort by average rating</option>
+                        <option value="date">Sort by newness</option>
+                        <option value="price">Sort by price: low to high</option>
+                        <option value="price-desc">Sort by price: high to low</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row module-wrapper shop-layout text-center">
+                <ul class="navList" style="list-style:none;">
+
+                {% for p in products %}
+                    <li style="" ><div class="" style="display:none;">{{ p.name }}</div>
+
+                <div class=" col-xs-4 wdtShop grid cs-style-3">
+
+                    <div class="img-wrap">
+                        <figure>
+                            <img alt="" src="{{ asset('Client/upload/'~p.image ) }}" class="img-responsive">
+                            <figcaption>
+                                <p><strong>${{ p.price }}</strong></p>
+                                <a class="blogging" title="Add to Cart" href="{{ path('_show_single_product',{'id':p.idProduct}) }}"><i class="fa fa-shopping-cart"></i></a>
+                            </figcaption>
+                        </figure>
+                    </div>
+
+                    <h4><a href="shop-single.html" title="">{{ p.name }}</a></h4>
+
+                    <div class="rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-o"></i>
+                        <i class="fa fa-star-o"></i>
+                    </div>
+                    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/starrating/css/rating.css') }}" />
+                    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+                    <script src="{{ asset('bundles/starrating/js/rating.js') }}"></script>
+                    {{ 2|rating }}
+
+                </div>
+                    </li>
+
+                {% endfor %}
+                </ul>
+
+            </div>
+            <hr class="invis">
+            <nav class="pagi clearfix text-center">
+                <ul class="pagination">
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                </ul>
+            </nav>
+        </div>
+    </section>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script>
+        $('#search').keyup(function(){
+            var valThis = $(this).val();
+            $('.navList>li').each(function(){
+                var text = $(this).text().toLowerCase();
+                (text.indexOf(valThis) == 0) ? $(this).show() : $(this).hide();
+            });
+        });
+    </script>
+
+{% endblock %}

@@ -1,0 +1,129 @@
+{% extends "::layoutHome.html.twig" %}
+
+{% block titre %}add_line{% endblock %}
+
+{% block content %}
+
+    <div class="page-title grey">
+        <div class="container">
+            <div class="title-area pull-left">
+                <h2>Shopping Cart <small>Please complete your order.</small></h2>
+                <div class="bread">
+                    <ol class="breadcrumb">
+                        <li><a href="#">Home</a></li>
+                        <li class="active">Cart</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="search pull-right">
+                <form>
+                    <div class="input-group">
+                        <input class="form-control" name="s" type="search" placeholder=" Search... ">
+                        <span class="input-group-btn">
+<button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
+</span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <section class="section white">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <form method="POST" class="shopform">
+                        <div class="table-responsive margin-top">
+                            <table id="cart-table" class="table table-condensed">
+
+                                <thead>
+                                <tr>
+                                    <th>Action</th>
+                                    <th>Image</th>
+                                    <th>Product</th>
+                                    <th>Price</th>
+                                    <th>Quanity</th>
+                                    <th>Total</th>
+                                </tr>
+                                </thead>
+
+                                <tbody>
+                                  {% for c in lines %}
+                                <tr>
+                                    <th class="product-remove">
+                                        <a class="remove" title="Remove this product" href="{{ path('_delete_line',{'id':c.lineId}) }}">×</a>
+                                    </th>
+                                    <th>
+                                        <div class="media">
+                                            <div class="relative">
+                                                <a href="shop-single.html" title="">
+                                                    <img src="{{ asset('Client/upload/'~c.image ) }}" alt="">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </th>
+                                    <th>
+                                        <a href="shop-single.html">{{ c.name }}</a>
+                                    </th>
+                                    <td>${{ c.price }}</td>
+                                    <td>
+
+                                      <input type="number" name="quantity" value={{ c.quantity }}  min="1" id={{ c.lineId }}>
+                                        <input type="button" name="update" value="update" onclick="test({{ c.lineId }})">
+                                    </td>
+                                    <td>
+                                      <div id={{ c.lineId }}{{ c.lineId }}> ${{ c.quantity * c.price }} </div>
+                                    </td>
+                                </tr>
+
+                                  {% endfor %}
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </form>
+
+                    <hr class="invis">
+                    <div class="checkout row">
+                        <div class="col-md-12 text-center">
+                            <a href="#" class="btn btn-default">UPDATE CART</a> <a href="{{ path('_add_order') }}" class="btn btn-primary">PROCEED TO CHECKOUT</a> <a href="categories.html" class="btn btn-default">CONTINUE SHOP</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="{{ asset('jquery-3.2.1.min.js') }}"></script>
+    <script>
+
+        function test(id) {
+
+
+            var body=document.getElementById(id).value;
+
+
+            var UrlEdit="{{ path('_update_line',{'id':"id",'body':"bod"}) }}";
+            UrlEdit = UrlEdit.replace("bod", body);
+            UrlEdit = UrlEdit.replace("id", id);
+
+
+            $.ajax({
+                type: 'POST',
+                url: UrlEdit,
+                success:function(d){
+
+                    document.getElementById(id+""+id).innerHTML = "$"+d.newPrice;
+
+
+                }
+            })
+
+        }
+
+
+    </script>
+
+{% endblock %}

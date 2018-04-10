@@ -1,0 +1,282 @@
+{% extends "::layoutHome.html.twig" %}
+
+{% block titre %}AdoptionBundle:Adoption:ShowMyAdoption{% endblock %}
+
+{% block content %}
+    <div class="slider-section">
+        <div class="tp-banner-container">
+            <div class="tp-banner">
+                <ul>
+                    <li data-transition="fade" data-slotamount="1" data-masterspeed="500" data-thumb="{{ asset('client/upload/slider_04.jpg') }}" data-saveperformance="off" data-title="Vet">
+                        <section class="section banner" style="background-image:url({{ asset('client/upload/vitrine.png') }});height: 80%;">
+                            <div class="tp-caption slider_layer_01 text-center lft tp-resizeme" data-x="center" data-y="100" data-speed="1000" data-start="600" data-easing="Power3.easeInOut" data-splitin="none" data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1" data-endspeed="1000" style="z-index: 9; white-space: nowrap;">Venez <strong>Adopter </strong>un <strong>Aimant </strong>pour <strong>Toujours</strong>
+                            </div>
+                            <div class="tp-caption slider_layer_02 text-center lft tp-resizeme" data-x="center" data-y="180" data-speed="1000" data-start="800" data-easing="Power3.easeInOut" data-splitin="none" data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1" data-endspeed="1000" style="z-index: 9; white-space: nowrap;">
+                                <div class="container">
+                                    <div class="row">
+                                        <div id="carousel-reviews" class="carousel slide text-center" data-ride="carousel">
+                                            <div class="carousel-inner">
+                                                <div class="item active">
+                                                    {% set i =0 %}
+                                                    {% for a in adoptions %}
+                                                        {% if i<=2 %}
+                                                            <div class="col-md-4 col-sm-6">
+                                                                <div class="block-text">
+                                                                    <a title="" href="{{ path('_show_animal_adoption',{'id':a.animalId.idAnimal}) }}">{{ a.animalId.nickName }}<small>{{ a.animalId.gender }}</small></a>
+                                                                    <span>{{ a.animalId.description }}</span>
+                                                                </div>
+                                                                <img src="{{ asset('client/upload/'~a.animalId.image) }}" class="img-thumbnail img-circle" alt="">
+                                                            </div>
+                                                            {% set i=i+1 %}
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                </div>
+                                                {% set j=0 %}
+                                                <div class="item">
+                                                    {% for a in adoptions %}
+                                                        {% set j=j+1 %}
+                                                        <div class="col-md-4 col-sm-4">
+                                                            {% if j in 4..6 %}
+                                                                <div class="block-text">
+                                                                    <a title="" href="#">{{ a.animalId.nickName }}<small>{{ a.animalId.gender }}</small></a>
+                                                                    <span>{{ a.animalId.description }}</span>
+                                                                </div>
+                                                                <img src="{{ asset('client/upload/'~a.animalId.image) }}" class="img-thumbnail img-circle" alt="">
+                                                            {% endif %}
+                                                        </div>
+                                                    {% endfor %}
+                                                </div>
+                                            </div>
+                                            <a class="left carousel-control" href="#carousel-reviews" role="button" data-slide="prev">
+                                                <span class="fa fa-angle-left" style="border-radius: 60%;"></span>
+                                            </a>
+                                            <a class="right carousel-control" href="#carousel-reviews" role="button" data-slide="next">
+                                                <span class="fa fa-angle-right" style="border-radius: 60%;"></span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div id="wrapper">
+        <div class="page-title grey">
+            <div class="container">
+                <div class="title-area pull-left">
+                    <h2>Our Gallery <small>Listed all our awesome gallery styles</small></h2>
+                    <div class="bread">
+                        <ol class="breadcrumb">
+                            <li><a href="#">Home</a></li>
+                            <li class="active">Gallery</li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="search pull-right">
+                    <form>
+                        <div class="input-group">
+                            <input class="form-control" name="s" id="field" type="search" placeholder=" Search... ">
+                            <span class="input-group-btn">
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                      </span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <section class="section white">
+            <div class="container-fluid">
+                <div class="text-center clearfix">
+                    <nav class="portfolio-filter">
+                        <ul>
+                            <li><a href="#" class="fa fa-paw" data-filter=".cat1" style="color: #00ad9c;"></a>
+                                <select id="select1" style="margin: 10px; padding: 10px;border: 2px solid orange;width: 220px;-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px;"  required>
+                                    <option style="background:darkorange;">--select catégorie--</option>
+                                    {% for c in categories %}
+                                        <option id="opt" value="{{ c.name }}">{{ c.name }}</option>
+                                    {% endfor %}</select>
+                                <select id="scatg" name="scatg" data-style="btn-white"
+                                        style="margin: 10px; padding: 10px;border: 2px solid orange;width: 200px;-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px;" hidden required>
+                                    <option style="background:darkorange;">--select sous catégorie--</option>
+                                </select>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <div id="body" class="portfolio">
+                    {% for a in adoption %}
+                        <div class="pitem entry item-w1 item-h2 cat1">
+                            <img src="{{ asset('client/upload/'~a.animalId.image ) }}" alt="" class="img-responsive" style="border-radius:100%; width: 300px; height: 300px;padding: 10px;">
+                            <div class="magnifier" style="border-radius:100%;">
+                                <div class="buttons">
+                                    <a data-rel="prettyPhoto" href="{{ asset('client/upload/'~a.animalId.image ) }}"  class="st" rel="bookmark"><span class="fa fa-search" style="padding: 10px"></span></a>
+                                    <a class="st" rel="bookmark" href="{{ path('_show_animal_adoption',{'id':a.animalId.idAnimal}) }}"><span style="padding: 10px" class="fa fa-link"></span></a>
+                                    <a class="st" rel="bookmark" href="{{ path('_delete_adoption',{'id':a.animalId.idAnimal}) }}"><span style="padding: 10px" class="fa fa-trash"></span></a>
+                                    <a class="st" rel="bookmark" href="{{ path('_update_adoption',{'id':a.animalId.idAnimal}) }}"><span style="padding: 10px" class="fa fa-edit"></span></a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+    </div>
+    <script src="{{ asset("client/jquery-3.2.1.min.js") }}"></script>
+    <script>
+        $('#field').keyup(function () {
+            var field = $("#field").val();
+            var DATA = {'field':field};
+            $.ajax({
+                type: "POST",
+                url: "{{ path('_search_my_adoption') }}",
+                data: DATA,
+                success: function (data) {
+                    var xx=0;
+                    var yy=0;
+                    var i=0;
+                    var k=i%2;
+                    $('#body').empty();
+                    $.each(data, function (k,a) {
+                            var y=a.animalId.image;
+                            var y1=a.animalId.idAnimal;
+                            var x = "{{ asset('client/upload/') }}";
+                            var z1="{{ path('_show_animal_adoption',{'id':"id"}) }}";
+                            var z2="{{ path('_delete_adoption',{'id':"id"}) }}";
+                            var z3="{{ path('_update_adoption',{'id':"id"}) }}";
+                            z1 = z1.replace("id", a.animalId.idAnimal);
+                            z2 = z2.replace("id", a.animalId.idAnimal);
+                            z3 = z3.replace("id", a.animalId.idAnimal);
+                            $('#body').append($('<div class="pitem entry item-w1 item-h2 cat1 isotope-item" style="width: 430px; height: 855px; position: absolute; left: 0px; top: 0px; transform: translate3d('+xx+'px, '+yy+'px, 0px);">' +
+                                '               <img alt="" src="'+x+y
+                                +'" class="img-responsive" style="border-radius:100%; width: 300px; height: 300px;padding: 10px;" >        ' +
+                                ' <div class="magnifier" style=" border-radius:100%;width: 300px; height: 300px; padding: 10px;">' +
+                                ' <div class="buttons">'+
+                                '<a href="'+x+y+'" class="st" rel="bookmark" data-rel="prettyPhoto"><span style="padding: 10px" class="fa fa-search"></span></a>'+
+                                '<a href="'+z1+'" class="st" rel="bookmark"><span style="padding: 10px" class="fa fa-link"></span></a>'+
+                                '<a href="'+z2+'" class="st" rel="bookmark"><span style="padding: 10px" class="fa fa-trash"></span></a>'+
+                                '<a href="'+z3+'" class="st" rel="bookmark"><span style="padding: 10px" class="fa fa-edit"></span></a>'+
+                                '                        </div></div></div>'));
+                            if(i<=5)
+                            { xx=xx+305;
+                                i=0;}
+                            else {yy=yy+300;}
+                            i=i+1;
+                        }
+                    );
+                }
+            });
+        });
+        $('#select1').change( function() {
+            var opt= $("#select1").val();
+            var DATA = {'opt':opt};
+            $.ajax({
+                type: "POST",
+                url: "{{ path('_show_my_adoption') }}",
+                data: DATA,
+                success: function (data) {
+                    $('#scatg').empty();
+                    $('#scatg').show();
+                    $.each(data, function (k,catgN) {
+
+                        $('#scatg').append($('<option id="opt1" style="background-color: white;\n' +
+                            '\tcolor: orange;\n' +
+                            '\twidth: 310px;\n' +
+                            '\tpadding: 10px 15px;\n' +
+                            '\theight: 20px;\n' +
+                            '\tcursor: pointer;"></option>')
+                            .attr('value', catgN.name)
+                            .text(catgN.name)
+                            .prop('selected',false)).change();
+                    });
+                }
+            });
+        });
+        $('#select1').change( function() {
+            var field = $("#select1").val();
+            var DATA = {'field':field};
+            $.ajax({
+                type: "POST",
+                url: "{{ path('_search_my_adoptioncat') }}",
+                data: DATA,
+                success: function (data) {
+                    var xx=0;
+                    var yy=0;
+                    var i=0;
+                    var k=i%2;
+                    $('#body').empty();
+                    $.each(data, function (k,a) {
+                        var y=a.animalId.image;
+                        var y1=a.animalId.idAnimal;
+                        var x = "{{ asset('client/upload/') }}";
+                        var z1="{{ path('_show_animal_adoption',{'id':"id"}) }}";
+                        var z2="{{ path('_delete_adoption',{'id':"id"}) }}";
+                        var z3="{{ path('_update_adoption',{'id':"id"}) }}";
+                        z1 = z1.replace("id", a.animalId.idAnimal);
+                        z2 = z2.replace("id", a.animalId.idAnimal);
+                        z3 = z3.replace("id", a.animalId.idAnimal);
+                        $('#body').append($('<div class="container-fluid"> <div class="pitem entry item-w1 item-h1 cat1" style="width: 430px; height: 855px; position: absolute; left: 0px; top: 0px; transform: translate3d('+xx+'px, '+yy+'px, 0px);">' +
+                            '               <img alt="" src="'+x+y
+                            +'" class="img-responsive" style="border-radius:100%; width: 300px; height: 300px;padding: 10px;" >        ' +
+                            ' <div class="magnifier" style="border-radius:100%;width: 300px; height: 300px;padding: 10px;">' +
+                            ' <div class="buttons">'+
+                            '<a href="'+x+y+'" class="st" rel="bookmark" data-rel="prettyPhoto"><span style="padding: 10px" class="fa fa-search"></span></a>'+
+                            '<a href="'+z1+'" class="st" rel="bookmark"><span style="padding: 10px" class="fa fa-link"></span></a>'+
+                            '<a href="'+z2+'" class="st" rel="bookmark"><span style="padding: 10px" class="fa fa-trash"></span></a>'+
+                            '<a href="'+z3+'" class="st" rel="bookmark"><span style="padding: 10px" class="fa fa-edit"></span></a>'+
+                            '                        </div></div></div></div>'));
+                        if(i<=5)
+                        { xx=xx+305;
+                            i=0;}
+                        else {yy=yy+300;}
+                        i=i+1;
+                    });
+                }
+            });
+        });
+        $('#scatg').change( function() {
+            var field = $("#scatg").val();
+            var DATA = {'field':field};
+            $.ajax({
+                type: "POST",
+                url: "{{ path('_search_my_adoption') }}",
+                data: DATA,
+                success: function (data) {
+                    var xx=0;
+                    var yy=0;
+                    var i=0;
+                    var k=i%2;
+                    $('#body').empty();
+                    $.each(data, function (k,a) {
+                        var y=a.animalId.image;
+                        var y1=a.animalId.idAnimal;
+                        var x = "{{ asset('client/upload/') }}";
+                        var z1="{{ path('_show_animal_adoption',{'id':"id"}) }}";
+                        var z2="{{ path('_delete_adoption',{'id':"id"}) }}";
+                        var z3="{{ path('_update_adoption',{'id':"id"}) }}";
+                        z1 = z1.replace("id", a.animalId.idAnimal);
+                        z2 = z2.replace("id", a.animalId.idAnimal);
+                        z3 = z3.replace("id", a.animalId.idAnimal);
+                        $('#body').append($('<div class="container-fluid"> <div class="pitem entry item-w1 item-h1 cat1" style="width: 430px; height: 855px; position: absolute; left: 0px; top: 0px; transform: translate3d('+xx+'px, '+yy+'px, 0px);">' +
+                            '               <img alt="" src="'+x+y
+                            +'" class="img-responsive" style="border-radius:100%; width: 300px; height: 300px;padding: 10px;" >        ' +
+                            ' <div class="magnifier" style="border-radius:100%;width: 300px; height: 300px;padding: 10px;">' +
+                            ' <div class="buttons">'+
+                            '<a href="'+x+y+'" class="st" rel="bookmark" data-rel="prettyPhoto"><span style="padding: 10px" class="fa fa-search"></span></a>'+
+                            '<a href="'+z1+'" class="st" rel="bookmark"><span style="padding: 10px" class="fa fa-link"></span></a>'+
+                            '<a href="'+z2+'" class="st" rel="bookmark"><span style="padding: 10px" class="fa fa-trash"></span></a>'+
+                            '<a href="'+z3+'" class="st" rel="bookmark"><span style="padding: 10px" class="fa fa-edit"></span></a>'+
+                            '                        </div></div></div></div>'));
+                        if(i<=5)
+                        { xx=xx+305;
+                            i=0;}
+                        else {yy=yy+300;}
+                        i=i+1;
+                    });
+                }
+            });
+        });
+    </script>
+{% endblock %}

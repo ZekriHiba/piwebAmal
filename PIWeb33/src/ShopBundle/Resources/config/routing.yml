@@ -1,0 +1,55 @@
+shop_homepage:
+    path:     /
+    defaults: { _controller: ShopBundle:Default:index }
+
+_show_product:
+    path:     /ShowProduct
+    defaults: { _controller: ShopBundle:Product:ShowProduct }
+
+_show_stock:
+    path:     /ShowStock
+    defaults: { _controller: ShopBundle:Product:ShowStock }
+
+_show_single_product:
+    path:     /ShowSingleProduct/{id}
+    defaults: { _controller: ShopBundle:Product:ShowSingleProduct }
+
+_add_product:
+    path:     /AddProduct
+    defaults: { _controller: ShopBundle:Product:AddProduct }
+
+_delete_product:
+    path:     /DeleteProduct/{id}
+    defaults: { _controller: ShopBundle:Product:DeleteProduct }
+
+_update_product:
+    path:     /UpdateProduct
+    defaults: { _controller: ShopBundle:Product:UpdateProduct }
+
+_add_line:
+    path:     /AddLine/{id}
+    defaults: { _controller: ShopBundle:CommandLine:AddLine }
+
+_delete_line:
+    path:     /DeleteLine/{id}
+    defaults: { _controller: ShopBundle:CommandLine:DeleteLine }
+
+_show_line:
+    path:     /ShowLine
+    defaults: { _controller: ShopBundle:CommandLine:ShowLine }
+
+_add_order:
+    path:     /AddOrder
+    defaults: { _controller: ShopBundle:Order:AddOrder }
+
+_payment:
+    path:     /Payment/{prixTotal}
+    defaults: { _controller: ShopBundle:Default:Payement }
+
+_payer:
+    path:     /Payer
+    defaults: { _controller: ShopBundle:Default:Payer }
+
+_update_line:
+    path:     /UpdateLine/{id}/{body}
+    defaults: { _controller: ShopBundle:CommandLine:UpdateLine }

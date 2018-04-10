@@ -1,0 +1,21 @@
+{% trans_default_domain 'FOSUserBundle' %}
+<section id="comingsoon" class="fullscreen paralbackground parallax" style="background-image:url({{ asset('Client/upload/xparallax_01.jpg.pagespeed.ic.bbBOmU960x.jpg') }})" data-img-width="1922" data-img-height="795" data-diff="100">
+    <div class="js-height-full">
+        <div class="home-text-wrapper container">
+            <div class="home-message">
+
+
+                <div class="newsletter">
+
+
+                    <div class="fos_user_user_show">
+                        <div class="span3">
+                        </div>
+                        <p style="color: white">{{ 'profile.show.username'|trans }}: {{ user.username }}</p>
+                        <p style="color: white">{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

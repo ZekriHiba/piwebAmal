@@ -1,0 +1,100 @@
+{% extends "::layoutHome.html.twig" %}
+
+{% block titre %}AdoptionBundle:WishlistAdoption:ShowWishlist{% endblock %}
+
+{% block content %}
+    <div class="slider-section">
+        <div class="tp-banner-container">
+            <div class="tp-banner">
+                <ul>
+                    <li data-transition="fade" data-slotamount="1" data-masterspeed="500" data-thumb="{{ asset('client/upload/slider_04.jpg') }}" data-saveperformance="off" data-title="Vet">
+                        <section class="section banner" style="background-image:url({{ asset('client/upload/vitrine.png') }});height: 80%;">
+                            <div class="tp-caption slider_layer_01 text-center lft tp-resizeme" data-x="center" data-y="100" data-speed="1000" data-start="600" data-easing="Power3.easeInOut" data-splitin="none" data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1" data-endspeed="1000" style="z-index: 9; white-space: nowrap;">Venez <strong>Adopter </strong>un <strong>Aimant </strong>pour <strong>Toujours</strong>
+                            </div>
+                            <div class="tp-caption slider_layer_02 text-center lft tp-resizeme" data-x="center" data-y="180" data-speed="1000" data-start="800" data-easing="Power3.easeInOut" data-splitin="none" data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1" data-endspeed="1000" style="z-index: 9; white-space: nowrap;">
+                                <div class="container">
+                                    <div class="row">
+                                        <div id="carousel-reviews" class="carousel slide text-center" data-ride="carousel">
+                                            <div class="carousel-inner">
+                                                <div class="item active">
+                                                    {% set i =0 %}
+                                                    {% for a in adoptions %}
+                                                        {% if i<=2 %}
+                                                            <div class="col-md-4 col-sm-6">
+                                                                <div class="block-text">
+                                                                    <a title="" href="{{ path('_show_animal_adoption',{'id':a.animalId.idAnimal}) }}">{{ a.animalId.nickName }}<small>{{ a.animalId.gender }}</small></a>
+                                                                    <span>{{ a.animalId.description }}</span>
+                                                                </div>
+                                                                <img style="border-radius:100%; width: 120px; height: 120px;" src="{{ asset('client/upload/'~a.animalId.image) }}" alt="">
+                                                            </div>
+                                                            {% set i=i+1 %}
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                </div>
+                                                {% set j=0 %}
+                                                <div class="item">
+                                                    {% for a in adoptions %}
+                                                        {% set j=j+1 %}
+                                                        <div class="col-md-4 col-sm-4">
+                                                            {% if j in 4..6 %}
+                                                                <div class="block-text">
+                                                                    <a title="" href="#">{{ a.animalId.nickName }}<small>{{ a.animalId.gender }}</small></a>
+                                                                    <span>{{ a.animalId.description }}</span>
+                                                                </div>
+                                                                <img  src="{{ asset('client/upload/'~a.animalId.image) }}" class="img-thumbnail img-circle" alt="">
+                                                            {% endif %}
+                                                        </div>
+                                                    {% endfor %}
+                                                </div>
+                                            </div>
+                                            <a style="height: 180px;" class="left carousel-control" href="#carousel-reviews" role="button" data-slide="prev">
+                                                <span class="fa fa-angle-left" style="border-radius: 60%;"></span>
+                                            </a>
+                                            <a style="height: 180px;" class="right carousel-control" href="#carousel-reviews" role="button" data-slide="next">
+                                                <span class="fa fa-angle-right" style="border-radius: 60%;"></span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div id="wrapper">
+        <div class="page-title grey">
+            <div class="container">
+                <div class="title-area pull-left">
+                    <h2>Our Gallery <small>Listed all our awesome gallery styles</small></h2>
+                    <div class="bread">
+                        <ol class="breadcrumb">
+                            <li><a href="#">Home</a></li>
+                            <li class="active">Gallery</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <section class="section white">
+            <div class="container-fluid">
+                <div id="body" class="portfolio">
+                    {% for a in wishes %}
+                        <div class="pitem entry item-w1 item-h2 cat1">
+                            <img src="{{ asset('client/upload/'~a.animalId.image ) }}" alt="" class="img-responsive" style="border-radius:100%; width: 300px; height: 300px;padding: 10px;">
+                            <div class="magnifier" style="border-radius:100%;">
+                                <div class="buttons">
+                                    <a data-rel="prettyPhoto" href="{{ asset('client/upload/'~a.animalId.image ) }}"  class="st" rel="bookmark"><span class="fa fa-search" style="padding: 10px"></span></a>
+                                    <a class="st" rel="bookmark" href="{{ path('_show_animal_adoption',{'id':a.animalId.idAnimal}) }}"><span style="padding: 10px" class="fa fa-link"></span></a>
+                                    <a class="st" rel="bookmark" href="{{ path('_delete_wishlist',{'id':a.animalId.idAnimal}) }}"><span style="padding: 10px;color: red;"  class="fa fa-heart"></span></a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+    </div>
+    <script src="{{ asset("client/jquery-3.2.1.min.js") }}"></script>
+{% endblock %}

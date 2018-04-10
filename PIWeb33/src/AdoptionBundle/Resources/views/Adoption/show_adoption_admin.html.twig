@@ -1,0 +1,349 @@
+
+{% extends "::LayoutAdmin.html.twig" %}
+
+{% block titre %}AdoptionBundle:Adoption:ShowAdoptionAdmin{% endblock %}
+
+{% block contenu %}
+
+
+        <!-- Main content -->
+        <section class="content">
+            <form action="#" method="get" class="sidebar-form">
+                <div class="input-group">
+                    <input type="text" id="search" name="q" class="form-control" placeholder="Search...">
+                    <span class="input-group-btn">
+                <button type="submit" name="search" id="search-btn" class="btn btn-flat">
+                  <i class="fa fa-search"></i>
+                </button>
+              </span>
+                </div>
+            </form>
+            <!-- Main row -->
+            <div class="row">
+                <!-- Left col -->
+                <div class="col-md-8">
+                    <!-- MAP & BOX PANE -->
+
+                    <!-- /.box -->
+                    <div class="row">
+                        <!-- /.col -->
+
+                        <div class="col-md-12" style="padding-left: 180px; width: 1000px">
+                            <!-- USERS LIST -->
+                            <div class="box box-danger">
+                                <div  class="box-header with-border">
+                                    <h3 class="box-title">Latest pets</h3>
+
+                                    <div class="box-tools pull-right">
+                                        <span class="label label-danger">8 Nouveaux zanimo</span>
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <!-- /.box-header -->
+                                <div class="box-body no-padding">
+                                    <ul  id ="show" class="users-list clearfix">
+
+                                    </ul>
+                                    <!-- /.users-list -->
+                                </div>
+                                <!-- /.box-body -->
+                                <div class="box-footer text-center">
+                                    <button id="view" style="background-color:darkred;" href="" class="btn btn-warning btn-flat">View All pets</button>
+                                </div>
+                                <!-- /.box-footer -->
+                            </div>
+                            <!--/.box -->
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+                    <div class="col-md-12" style="padding-left: 150px; width: 1000px">
+                    <!-- TABLE: LATEST ORDERS -->
+                    <div class="box box-info">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Statistique</h3>
+
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                </button>
+                                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                            </div>
+                        </div>
+
+                        <!-- /.box-body -->
+                        <div class="box-footer clearfix"  onchange="location = this.value;">
+                            <a id="btn1" style="border-radius: 5px;" href="javascript:void(0)" class="btn btn-sm btn-info btn-flat pull-left">Cette journée</a>
+                            <a id="btn2" style="border-radius: 5px;" href="javascript:void(0)" class="btn btn-sm btn-info btn-flat pull-left">Cette semaine</a>
+                            <a id="btn3" style="border-radius: 5px;" href="javascript:void(0)" class="btn btn-sm btn-info btn-flat pull-left">Ce mois </a>
+                            <a id="btn4" style="border-radius: 5px;" href="javascript:void(0)" class="btn btn-sm btn-info btn-flat pull-left">Cet année</a>
+                            <div id="btn0"></div>
+                        </div>
+                        <div class="box-footer clearfix">
+                        <div id="div_chart"></div>
+                        <div id="div_chart1"></div>
+                        <div id="div_chart2"></div>
+                        <div id="div_chart3"></div>
+                        <div id="col"></div>
+                        <!-- /.box-footer -->
+                        <script src="{{ asset('jquery-3.2.1.min.js') }}"></script>
+                        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                        <script type="text/javascript">
+                            $('#btn1').click(function () {
+                              {{ gc_draw(piechart,'div_chart') }}
+                                $('#div_chart1').empty();
+                                $('#div_chart2').empty();
+                                $('#div_chart3').empty();
+                                $('#col').empty();
+                            });
+                            $('#btn2').click(function () {
+                                $('#btn0').empty();
+                                $('#div_chart').empty();
+                                $('#div_chart1').empty();
+                                $('#div_chart2').empty();
+                                $('#div_chart3').empty();
+                                $('#col').empty();
+                              $('#btn0').append('<br><br>' +
+                                  '<a id="btn21" style="border-radius: 5px;" href="javascript:void(0)" class="btn btn-sm btn-info btn-flat pull-left">Pie Chart</a><a id="btn22" style="border-radius: 5px;" href="javascript:void(0)" class="btn btn-sm btn-info btn-flat pull-left">Bar Chart</a>');
+                                $('#btn21').click(function () {
+                                    {{ gc_draw(piechart1,'div_chart1') }}
+                                    $('#div_chart').empty();
+                                    $('#div_chart2').empty();
+                                    $('#div_chart3').empty();
+                                    $('#col').empty();
+                                });
+                                $('#btn22').click(function () {
+                                    {{ gc_draw(col,'col') }}
+                                    $('#div_chart').empty();
+                                    $('#div_chart1').empty();
+                                    $('#div_chart2').empty();
+                                    $('#div_chart3').empty();
+                                });
+                            });
+                            $('#btn3').click(function () {
+                                {{ gc_draw(piechart2,'div_chart2') }}
+                                $('#div_chart').empty();
+                                $('#div_chart1').empty();
+                                $('#div_chart3').empty();
+                                $('#col').empty();
+                            });
+                            $('#btn4').click(function () {
+                                {{ gc_draw(piechart3,'div_chart3') }}
+                                $('#div_chart1').empty();
+                                $('#div_chart2').empty();
+                                $('#div_chart').empty();
+                                $('#col').empty();
+                            });
+                        </script>
+                        </div>
+
+                    </div></div>
+                    <!-- /.box -->
+                </div>
+                <!-- /.col -->
+
+
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </section>
+
+<script src="{{ asset('jquery-3.2.1.min.js') }}"></script>
+<script>
+    function showw() {
+        var DATA;
+        var pos;
+        $.ajax({
+            type: "POST",
+            url: "{{ path('_show_adoption_admin') }}",
+            data: DATA,
+            success: function (data) {
+                $('#show').empty();
+                $.each(data, function (k,a) {
+                    var y=a.animalId.image;
+                    var y1=a.animalId.idAnimal;
+                    var x = "{{ asset('client/upload/') }}";
+                    var z1="{{ path('_show_animal_adoption',{'id':"id"}) }}";
+                    var z3="{{ path('_valider_admin',{'id':"x"}) }}";
+                    var z2="{{ "d" | date }}";
+                    z2=z2.replace("d",a.animalId.age);
+                    z3=z3.replace("x",a.animalId.idAnimal);
+                    z1 = z1.replace("id", a.animalId.idAnimal);
+                    $('#show').append($(' <li class="dropdown user user-menu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">' +
+                        '<img class="user-image" alt="User Image" src="'+x+y+'" style="border-radius:100%; width: 100px; height: 100px;padding: 10px;"' +
+                        ' alt="User Image"><a class="users-list-name" href="#">' +
+                        ' <a href="'+z1+'"><span class="fa fa-link"></span><br></a>'
+                        +a.animalId.nickName+'</a><details class="users-list-date">'+a.animalId.description+'</details></a>' +
+                        '<ul class="dropdown-menu">\n' +
+                        '                            <!-- User image -->\n' +
+                        '          <!-- Widget: user widget style 1 -->\n' +
+                        '      <form method="POST" action="'+z3+'"> <div style="width: 350px" class="box box-widget widget-user">\n' +
+                        '            <!-- Add the bg color to the header using any of the bg-* classes -->\n' +
+                        '            <div class="widget-user-header bg-black" style="background: url('+x+y+') center center;">\n' +
+                        '              <h3 class="widget-user-username" style="padding: 15px">'+a.animalId.nickName+'</h3>\n' +
+                        '              <h5 class="widget-user-desc" style="padding: 15px">'+a.animalId.description+'</h5>\n' +
+                        '            </div>\n' +
+                        '            <div class="widget-user-image">\n' +
+                        '              <img class="img-circle" style="border-radius:100%; width: 100px; height: 100px;" src="'+x+y+'" alt="User Avatar">\n' +
+                        '            </div>\n' +
+                        '            <div class="box-footer">\n' +
+                        '                <div class="col-sm-6 border-right">\n' +
+                        '                  <div class="description-block">\n' +
+                        '                    <h5 class="description-header">Taille :'+a.animalId.size+'</h5>\n' +
+                        '                    <span class="description-text">Poids : '+a.animalId.weight+'</span>\n' +
+                        '                  </div>\n' +
+                        '                <!-- /.col -->\n' +
+                        '              </div>\n' +
+                        '                <div class="col-sm-6">\n' +
+                        '                  <div class="description-block">\n' +
+                        '                    <h5 class="description-header">Sexe : '+a.animalId.gender+'</h5>\n' +
+                        '                    <span class="description-text">Couleur : '+a.animalId.color+'</span>\n' +
+                        '                  </div>\n' +
+                        '                <!-- /.col -->\n' +
+                        '              </div>\n' +
+                        '                <div style="alignment: center">\n' +
+                        '                  <div class="description-block">\n' +
+                        '                    <button name="valider" class="btn btn-warning btn-flat" style="border-radius: 6px">Valider</button>\n' +
+                        '                  </div>\n' +
+                        '                <!-- /.col -->\n' +
+                        '              </div>\n' +
+                        '            </div>\n' +
+                        '          </div></form>' +
+                        '                        </ul></li>'));
+                });
+            }
+        });
+    }
+    showw();
+    $('#search').keyup(function () {
+        var search = $("#search").val();
+        var DATA = {'search':search};
+        $.ajax({
+            type: "POST",
+            url: "{{ path('_search_adoption_admin') }}",
+            data: DATA,
+            success: function (data) {
+                $('#show').empty();
+                $.each(data, function (k,a) {
+                    var y=a.image;
+                    var y1=a.idAnimal;
+                    var x = "{{ asset('client/upload/') }}";
+                    var z1="{{ path('_show_animal_adoption',{'id':"id"}) }}";
+                    var z3="{{ path('_valider_admin',{'id':"x"}) }}";
+                    var z2="{{ "d" | date }}";
+                    z2=z2.replace("d",a.age);
+                    z3=z3.replace("x",a.idAnimal);
+                    z1 = z1.replace("id", a.idAnimal);
+                    $('#show').append($(' <li class="dropdown user user-menu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">' +
+                        '<img class="user-image" alt="User Image" src="'+x+y+'" style="border-radius:100%; width: 100px; height: 100px;padding: 10px;"' +
+                        ' alt="User Image"><a class="users-list-name" href="#">' +
+                        ' <a href="'+z1+'"><span class="fa fa-link"></span><br></a>'
+                        +a.nickName+'</a><details class="users-list-date">'+a.description+'</details></a>' +
+                        '<ul class="dropdown-menu">\n' +
+                        '                            <!-- User image -->\n' +
+                        '          <!-- Widget: user widget style 1 -->\n' +
+                        '      <form method="POST" action="'+z3+'"> <div style="width: 350px" class="box box-widget widget-user">\n' +
+                        '            <!-- Add the bg color to the header using any of the bg-* classes -->\n' +
+                        '            <div class="widget-user-header bg-black" style="background: url('+x+y+') center center;">\n' +
+                        '              <h3 class="widget-user-username" style="padding: 15px">'+a.nickName+'</h3>\n' +
+                        '              <h5 class="widget-user-desc" style="padding: 15px">'+a.description+'</h5>\n' +
+                        '            </div>\n' +
+                        '            <div class="widget-user-image">\n' +
+                        '              <img class="img-circle" style="border-radius:100%; width: 100px; height: 100px;" src="'+x+y+'" alt="User Avatar">\n' +
+                        '            </div>\n' +
+                        '            <div class="box-footer">\n' +
+                        '                <div class="col-sm-6 border-right">\n' +
+                        '                  <div class="description-block">\n' +
+                        '                    <h5 class="description-header">Taille :'+a.size+'</h5>\n' +
+                        '                    <span class="description-text">Poids : '+a.weight+'</span>\n' +
+                        '                  </div>\n' +
+                        '                <!-- /.col -->\n' +
+                        '              </div>\n' +
+                        '                <div class="col-sm-6">\n' +
+                        '                  <div class="description-block">\n' +
+                        '                    <h5 class="description-header">Sexe : '+a.gender+'</h5>\n' +
+                        '                    <span class="description-text">Couleur : '+a.color+'</span>\n' +
+                        '                  </div>\n' +
+                        '                <!-- /.col -->\n' +
+                        '              </div>\n' +
+                        '                <div style="alignment: center">\n' +
+                        '                  <div class="description-block">\n' +
+                        '                    <button name="valider" class="btn btn-warning btn-flat" style="border-radius: 6px">Valider</button>\n' +
+                        '                  </div>\n' +
+                        '                <!-- /.col -->\n' +
+                        '              </div>\n' +
+                        '            </div>\n' +
+                        '          </div></form>' +
+                        '                        </ul></li>'));
+                });
+            }
+        });
+    });
+    $('#view').click(function () {
+        var DATA;
+        var pos;
+        $.ajax({
+            type: "POST",
+            url: "{{ path('_show_all_admin') }}",
+            data: DATA,
+            success: function (data) {
+                $('#show').empty();
+                $.each(data, function (k,a) {
+                    var y=a.animalId.image;
+                    var y1=a.animalId.idAnimal;
+                    var x = "{{ asset('client/upload/') }}";
+                    var z1="{{ path('_show_animal_adoption',{'id':"id"}) }}";
+                    var z3="{{ path('_valider_admin',{'id':"x"}) }}";
+                    var z2="{{ "d" | date }}";
+                    z2=z2.replace("d",a.animalId.age);
+                    z3=z3.replace("x",a.animalId.idAnimal);
+                    z1 = z1.replace("id", a.animalId.idAnimal);
+                    $('#show').append($(' <li class="dropdown user user-menu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">' +
+                        '<img class="user-image" alt="User Image" src="'+x+y+'" style="border-radius:100%; width: 100px; height: 100px;padding: 10px;"' +
+                        ' alt="User Image"><a class="users-list-name" href="#">' +
+                        ' <a href="'+z1+'"><span class="fa fa-link"></span><br></a>'
+                        +a.animalId.nickName+'</a><details class="users-list-date">'+a.animalId.description+'</details></a>' +
+                        '<ul class="dropdown-menu">\n' +
+                        '                            <!-- User image -->\n' +
+                        '          <!-- Widget: user widget style 1 -->\n' +
+                        '      <form method="POST" action="'+z3+'"> <div style="width: 350px" class="box box-widget widget-user">\n' +
+                        '            <!-- Add the bg color to the header using any of the bg-* classes -->\n' +
+                        '            <div class="widget-user-header bg-black" style="background: url('+x+y+') center center;">\n' +
+                        '              <h3 class="widget-user-username" style="padding: 15px">'+a.animalId.nickName+'</h3>\n' +
+                        '              <h5 class="widget-user-desc" style="padding: 15px">'+a.animalId.description+'</h5>\n' +
+                        '            </div>\n' +
+                        '            <div class="widget-user-image">\n' +
+                        '              <img class="img-circle" style="border-radius:100%; width: 100px; height: 100px;" src="'+x+y+'" alt="User Avatar">\n' +
+                        '            </div>\n' +
+                        '            <div class="box-footer">\n' +
+                        '                <div class="col-sm-6 border-right">\n' +
+                        '                  <div class="description-block">\n' +
+                        '                    <h5 class="description-header">Taille :'+a.animalId.size+'</h5>\n' +
+                        '                    <span class="description-text">Poids : '+a.animalId.weight+'</span>\n' +
+                        '                  </div>\n' +
+                        '                <!-- /.col -->\n' +
+                        '              </div>\n' +
+                        '                <div class="col-sm-6">\n' +
+                        '                  <div class="description-block">\n' +
+                        '                    <h5 class="description-header">Sexe : '+a.animalId.gender+'</h5>\n' +
+                        '                    <span class="description-text">Couleur : '+a.animalId.color+'</span>\n' +
+                        '                  </div>\n' +
+                        '                <!-- /.col -->\n' +
+                        '              </div>\n' +
+                        '                <div style="alignment: center">\n' +
+                        '                  <div class="description-block">\n' +
+                        '                    <button name="valider" class="btn btn-warning btn-flat" style="border-radius: 6px">Valider</button>\n' +
+                        '                  </div>\n' +
+                        '                <!-- /.col -->\n' +
+                        '              </div>\n' +
+                        '            </div>\n' +
+                        '          </div></form>' +
+                        '                        </ul></li>'));
+                });
+            }
+        });
+    });
+</script>
+{% endblock %}

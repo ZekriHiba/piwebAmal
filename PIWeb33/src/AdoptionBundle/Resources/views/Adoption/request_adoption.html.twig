@@ -1,0 +1,187 @@
+
+{% extends "::layoutHome.html.twig" %}
+
+{% block titre %}AdoptionBundle:Adoption:RequestAdoption{% endblock %}
+
+{% block content %}
+
+    <div class="page-title grey">
+        <div class="container">
+            <div class="title-area pull-left">
+                <h2>Adoptions <small>You may search for any category here.</small></h2>
+                <div class="bread">
+                    <ol class="breadcrumb">
+                        <li><a href="#">Home</a></li>
+                        <li class="active">Adoption</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="section white">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1 col-xs-10">
+                    <div class="appoform-wrapper">
+                        <form method="POST" action="{{ path('_request_adoption',{'id':id }) }}">
+                            <header class="form-header">
+                                <h3>Adoption Form</h3>
+                            </header>
+                            <div class="post-body-form text-center">
+                                <p id="pp" >In order to provide better service to you, PetVet<br>
+                                    It is working with the apdoption system. Please fill in the following form completely.</p>
+                            </div>
+                            <fieldset class="row-fluid appoform">
+                                <div class="col-md-12"><br>
+                                    <label>Etes vous éleveur? </label>
+                                    <select name="eleveur" id="eleveur" class="selectpicker" data-style="btn-white" required="required">
+                                        <option value="" disabled="disabled" selected>--  --</option>
+                                        <option value="0">Oui</option>
+                                        <option value="1">Non</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-12">
+                                    <label>Connaissez-vous cette race?  </label>
+                                    <select name="race" id="race" class="selectpicker" data-style="btn-white" required="required">
+                                        <option value="" disabled="disabled"  selected>--  --</option>
+                                        <option value="0">Oui</option>
+                                        <option value="1">Non</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-12">
+                                    <label>Est ce que vous habitez dans une maison ou dans un appartement ? </label>
+                                    <select name="local" id="local" class="selectpicker" data-style="btn-white" required="required">
+                                        <option value="" disabled="disabled"  selected>--  --</option>
+                                        <option value="Maison">Maison</option>
+                                        <option value="Appartement">Appartement</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-12">
+                                    <label>Vous avez un jardin?   </label>
+                                    <select name="jardin" id="jardin" class="selectpicker" data-style="btn-white" required="required">
+                                        <option value="" disabled="disabled"  selected>--  --</option>
+                                        <option value="0">Oui</option>
+                                        <option value="1">Non</option>
+                                    </select>
+                                </div><div class="col-md-12">
+                                    <label>Avez-vous suffisamment d'espace pour que les chiots puissent jouer?    </label>
+                                    <select name="espace" id="espace" class="selectpicker" data-style="btn-white" required="required">
+                                        <option value="" disabled="disabled"  selected>--  --</option>
+                                        <option value="0">Oui</option>
+                                        <option value="1">Non</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-12">
+                                    <label>Il sera à l extérieur ou avec vous dedans? </label>
+                                    <select name="lieu" id="lieu" class="selectpicker" data-style="btn-white" required="required">
+                                        <option value="" disabled="disabled"  selected>--  --</option>
+                                        <option value="Dedans">Dedans</option>
+                                        <option value="Extérieur">Extérieur</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-12">
+                                    <label>Seul toute la journée ou accompagné?      </label>
+                                    <select name="carry" id="carry" class="selectpicker" data-style="btn-white" required="required">
+                                        <option value="" disabled="disabled"  selected>--  --</option>
+                                        <option value="Accompagne">Accompagné</option>
+                                        <option value="Seul">Seul</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-12">
+                                    <label>Si il aboie quand il est seul, vous avez des voisins tolérant?       </label>
+                                    <select name="voisin" id="voisin" class="selectpicker" data-style="btn-white" required="required">
+                                        <option value="" disabled="disabled"  selected>--  --</option>
+                                        <option value="0">Oui</option>
+                                        <option value="1">Non</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-12">
+                                    <label>Avez-vous des enfants à la maison? </label>
+                                    <select name="enfant" id="enfant" class="selectpicker" data-style="btn-white" required="required">
+                                        <option value="" disabled="disabled"  selected>--  --</option>
+                                        <option value="0">Oui</option>
+                                        <option value="1">Non</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-12">
+                                    <label>Etes vous sure que votre temps vous permettra de bien prendre soin de lui? </label>
+                                    <select name="temps" id="temps" class="selectpicker" data-style="btn-white" required="required">
+                                        <option value="" disabled="disabled"  selected>--  --</option>
+                                        <option value="0">Oui</option>
+                                        <option value="1">Non</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-12">
+                                    <label>Êtes-vous prêt à vous engager à long terme?  </label>
+                                    <select name="engagement" id="engagement" class="selectpicker" data-style="btn-white" required="required">
+                                        <option value="" disabled="disabled"  selected>--  --</option>
+                                        <option value="0">Oui</option>
+                                        <option value="1">Non</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-12">
+                                    <label>Êtes-vous prêt à modifier vos habitudes de vie?   </label>
+                                    <select name="habitude" id="habitude" class="selectpicker" data-style="btn-white" required="required">
+                                        <option value="" disabled="disabled"  selected>--  --</option>
+                                        <option value="0">Oui</option>
+                                        <option value="1">Non</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-12">
+                                    <label>Êtes-vous prêt à assumer tous les frais pour les soins de l’animal?  </label>
+                                    <select name="soin" id="soin" class="selectpicker" data-style="btn-white" required="required">
+                                        <option value="" disabled="disabled"  selected>--  --</option>
+                                        <option value="0">Oui</option>
+                                        <option value="1">Non</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-12">
+                                    <label>Etes-vous prêt à faire des sacrifices pour votre animal ?  </label>
+                                    <select name="sacrifice" id="sacrifice" class="selectpicker" data-style="btn-white" required="required">
+                                        <option value="" disabled="disabled"  selected>--  --</option>
+                                        <option value="0">Oui</option>
+                                        <option value="1">Non</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-12">
+                                    <label>Est ce que votre famille accepte que vous élever un animal ?  </label>
+                                    <select name="famille" id="famille" class="selectpicker" data-style="btn-white" required="required">
+                                        <option value="" disabled="disabled"  selected>--  --</option>
+                                        <option value="0">Oui</option>
+                                        <option value="1">Non</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-12">
+                                    <label style="color: orangered">Etes-vous toujours prêts à adopter un animal?   </label>
+                                    <select name="pret" id="pret" class="selectpicker" data-style="btn-white" required="requiredf">
+                                        <option value="" disabled="disabled"  selected>--  --</option>
+                                        <option value="0">Oui</option>
+                                        <option value="1">Non</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-12">
+                                    <label class="sr-only">Description</label>
+                                    <textarea placeholder="Add extra notes" name="description" id="description" class="form-control"></textarea>
+                                </div>
+                                <br>
+                                <div class="col-md-12">
+                                    <button type="submit" name="save" class="btn btn-primary btn-block btn-lg">Valider</button>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    </div>
+    <script src="{{ asset('jquery-3.2.1.min.js') }}"></script>
+    <script src="{{ asset('client/js/jquery-ui.js.pagespeed.jm.k0eOq83zB0.js') }}"></script>
+    <script src="{{ asset('client/js/jquery-ui-timepicker-addon.js.pagespeed.jm.XhamyIycA9.js') }}"></script>
+    <script src="{{ asset('client/js/bootstrap-select.js.pagespeed.jm.1opnvzpd-H.js') }}"></script>
+    <script type="text/javascript">$(function(){$('.selectpicker').selectpicker;$("#datepicker").datepicker();});</script>
+{% endblock %}
+
+    {% block create %}
+        <link rel="stylesheet" type="text/css" href="{{ asset('client/css/animate.css%2bbootstrap.css%2bcarousel.css%2bbootstrap-select.css%2bjquery-ui.css.pagespeed.cc.M6_eiQhCjV.css') }}"/>
+    {% endblock %}

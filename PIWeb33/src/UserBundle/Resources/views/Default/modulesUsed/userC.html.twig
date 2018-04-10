@@ -1,0 +1,108 @@
+<div style="background-image:url( {{ asset('client/upload/xvet_bg.jpg.pagespeed.ic.1-BunXP9Bo.jpg') }})">
+<img src="{{ asset('Client/images/user5.png') }}" alt="Ova" style="height: 50px;margin-left: 1250px" id="image">
+<div  class=" " style="margin-left: 1250px" >
+
+    <ul>
+        <li style="color: white;" id="l1" hidden>
+            <a href="{{ path('fos_user_profile_show') }}" style="color: white;font-size: large"  id="a1" hidden>Mes Informations</a>
+        </li>
+        <li style="color: white;" id="l2" hidden>
+            <a href="{{ path('fos_user_profile_edit') }}" style="color: white;font-size: large" id="a2" hidden>Editer mes Informations</a>
+        </li>
+        <li style="color: white;" id="l3" hidden>
+            <a href="" style="color: white;font-size: large" id="a3" hidden>Mes Factures</a>
+        </li>
+        <li style="color: white;" id="l4" hidden>
+            <a href="" style="color: white;font-size: large" id="a4" hidden>Mes Adresses</a>
+        </li>
+        <li style="color: white;" id="l5" hidden>
+            <a href="{{ path('fos_user_security_logout') }}" style="color: white;font-size: large" id="a5" hidden>deconnexion</a>
+        </li>
+    </ul>
+
+</div>
+</div>
+
+<script src="{{ asset('jquery-3.2.1.min.js') }}"></script>
+<script>
+    $('#image').click(
+        function () {
+            $('#l1').toggle();
+            $('#l2').toggle();
+            $('#l3').toggle();
+            $('#l4').toggle();
+            $('#l5').toggle();
+            $('#a1').toggle();
+            $('#a2').toggle();
+            $('#a3').toggle();
+            $('#a4').toggle();
+            $('#a5').toggle();
+
+        }
+    );
+    $('#a1').mouseenter(
+        function () {
+            $('#a1').css('color','orange');
+            $('#l1').css('color','orange');
+        }
+    );
+    $('#a1').mouseleave(
+        function () {
+            $('#a1').css('color','white');
+            $('#l1').css('color','white');
+        }
+    );
+
+    $('#a2').mouseenter(
+        function () {
+            $('#a2').css('color','orange');
+            $('#l2').css('color','orange');
+        }
+    );
+    $('#a2').mouseleave(
+        function () {
+            $('#a2').css('color','white');
+            $('#l2').css('color','white');
+        }
+    );
+
+    $('#a3').mouseenter(
+        function () {
+            $('#a3').css('color','orange');
+            $('#l3').css('color','orange');
+        }
+    );
+    $('#a3').mouseleave(
+        function () {
+            $('#a3').css('color','white');
+            $('#l3').css('color','white');
+        }
+    );
+
+    $('#a4').mouseenter(
+        function () {
+            $('#a4').css('color','orange');
+            $('#l4').css('color','orange');
+        }
+    );
+    $('#a4').mouseleave(
+        function () {
+            $('#a4').css('color','white');
+            $('#l4').css('color','white');
+        }
+    );
+
+    $('#a5').mouseenter(
+        function () {
+            $('#a5').css('color','orange');
+            $('#l5').css('color','orange');
+        }
+    );
+    $('#a5').mouseleave(
+        function () {
+            $('#a5').css('color','white');
+            $('#l5').css('color','white');
+        }
+    );
+
+</script>

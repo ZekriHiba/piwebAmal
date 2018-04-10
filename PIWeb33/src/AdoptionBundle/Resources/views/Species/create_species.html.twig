@@ -1,0 +1,131 @@
+
+{% extends "::LayoutAdmin.html.twig" %}
+
+{% block titre %}AdoptionBundle:Species:CreateSpecies{% endblock %}
+
+{% block contenu %}
+
+        <section class="content-header">
+            <h1>
+                Catégories et sous catégories:
+                <small>Zanimo</small>
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a href="#">Adoption</a></li>
+                <li class="active">Categories</li>
+            </ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="row">
+                <!-- left column -->
+                <div class="col-md-6">
+
+
+
+
+                </div>
+                <!--/.col (left) -->
+                <!-- right column -->
+                <div class="col-md-12">
+
+                    <!-- /.box -->
+                    <!-- general form elements disabled -->
+                    <div class="box box-warning">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Veuillez ajouter une catégorie : </h3>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <form role="form" method="POST" action="{{ path('_create_species') }}">
+                                <!-- text input -->
+                                <div class="form-group">
+                                    <label style="color: darkgreen" id="l1" class="control-label" for="inputSuccess" hidden><i class="fa fa-check"></i> success</label>
+                                    <label style="color: red" id="l2" class="control-label" for="inputError" hidden><i class="fa fa-times-circle-o"></i>Catégorie existente</label>
+                                        <input type="text" class="form-control" name="field" id="field" placeholder="veuillez saisir le nom ...">
+                                </div>
+                                <button id="species" type="button" class="btn btn-info pull-right">Ajouter catégorie</button>
+                                   <br><br><br>
+                                <div id="ff" hidden>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="nom" name="nom" placeholder="veuillez saisir le nom ...">
+                                    </div>
+                                    <button type="submit" name="save" style="background-color: orange;border-color: orange" class="btn btn-info pull-right">Ajouter catégorie</button>
+                                </div>
+                                <div id="fff" hidden>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="nom2" name="nom2" placeholder="veuillez saisir le nom ...">
+                                    </div>
+                                    <button type="submit" name="edit" style="background-color: orangered;border-color: orangered" class="btn btn-info pull-right">Ajouter sous catégorie</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="box-body">
+                            <table id="example2" class="table table-bordered table-hover">
+
+                                <thead>
+                                <tr>
+                                    <th>Nom Catégorie</th>
+                                    <th>Action</th>
+                                    <th>Nom sous Catégorie</th>
+                                </tr>
+                                </thead>
+
+                                <tbody>
+                                {% for c in catg %}
+                                <tr>
+                                    <td id="sss" class="{{ c.name }}">{{ c.name }}</td>
+                                    <td><a href="{{ path('_delete_species' ,{'id':c.speciesId}) }}" >Supprimer</a></td>
+                                    <td>
+                                    {% for cc in scatg %}
+                                        {% if c.speciesId==cc.speciesId.speciesId %}
+                                           {{ cc.name }}<a style="padding: 10px;" href="{{ path('_delete_sub_species' ,{'id':cc.sSpeciesId}) }}" >Supprimer</a><br>
+                                        {% endif %}
+                                    {% endfor %}
+                                      <br>  <button type="button" value="{{ c.name }}" class="ss" style="border-radius: 5px;padding: 10px;background-color: #f6ecd5;border-color: #f6ecd5"  >Ajouter une sous catégorie</button>
+                                    </td>
+                                </tr> {% endfor %}
+                                </tbody>
+
+
+                            </table>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!-- /.box -->
+                </div>
+                <!--/.col (right) -->
+            </div>
+            <!-- /.row -->
+        </section>
+    <script src="{{ asset('jquery-3.2.1.min.js') }}"></script>
+<script>
+    $('#field').keyup( function() {
+        var field = $("#field").val();
+        var DATA = {'field': field};
+        $.ajax({
+            type: "POST",
+            url: "{{ path('_create_species') }}",
+            data: DATA,
+
+            success: function (data) {
+                    $('#l2').show();
+                    $('#l1').hide();
+            },error:function (error) {
+                $('#l1').show();
+                $('#l2').hide();
+            }
+        });
+    });
+
+    $('#species').click(function () {
+            $('#ff').show();
+    });
+    $('.ss').click(function () {
+        $('#fff').show();
+        $('#field').val($(this).val());
+    });
+</script>
+{% endblock %}

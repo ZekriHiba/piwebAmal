@@ -1,0 +1,19 @@
+
+
+<div class="" style="background-image:url( {{ asset('client/upload/xvet_bg.jpg.pagespeed.ic.1-BunXP9Bo.jpg') }})" >
+    <a href="{{ path('fos_user_security_login') }}" style="color: white;font-size: large;text-decoration: underline;margin-left: 1250px" id="a1">se connecter</a>
+</div>
+
+<script src="{{ asset('jquery-3.2.1.min.js') }}"></script>
+<script>
+    $('#a1').mouseenter(
+        function () {
+            $('#a1').css('color','orange');
+        }
+    );
+    $('#a1').mouseleave(
+        function () {
+            $('#a1').css('color','white');
+        }
+    );
+</script>

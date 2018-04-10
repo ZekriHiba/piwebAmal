@@ -1,0 +1,123 @@
+adoption_homepage:
+    path:     /homePage
+    defaults: { _controller: AdoptionBundle:Default:index }
+
+adoption_login:
+    path:     /login
+    defaults: { _controller: AdoptionBundle:Default:login }
+
+adoption_journee_pie:
+    path:     /b
+    defaults: { _controller: AdoptionBundle:Default:PieChartJournee }
+
+adoption_mois_pie:
+    path:     /c
+    defaults: { _controller: AdoptionBundle:Default:PieChartMensuel }
+
+adoption_annee_pie:
+    path:     /d
+    defaults: { _controller: AdoptionBundle:Default:PieChartAnnuel }
+
+adoption_col_pie:
+    path:     /e
+    defaults: { _controller: AdoptionBundle:Default:ColumnChartSemaine }
+
+_create_adoption:
+    path:     /CreateAdoption
+    defaults: { _controller: AdoptionBundle:Adoption:CreateAdoption }
+
+_show_adoption:
+    path:     /ShowAdoption
+    defaults: { _controller: AdoptionBundle:Adoption:ShowAdoption }
+
+_show_animal_adoption:
+    path:     /ShowAnimalAdoption/{id}
+    defaults: { _controller: AdoptionBundle:Adoption:ShowAnimalAdoption }
+
+_delete_adoption:
+    path:     /DeleteAdoption/{id}
+    defaults: { _controller: AdoptionBundle:Adoption:DeleteAdoption }
+
+_update_adoption:
+    path:     /UpdateAdoption/{id}
+    defaults: { _controller: AdoptionBundle:Adoption:UpdateAdoption }
+
+_search_adoption:
+    path:     /SearchAdoption
+    defaults: { _controller: AdoptionBundle:Adoption:SearchAdoption }
+
+_search_adoptioncat:
+    path:     /SearchAdoptioncat
+    defaults: { _controller: AdoptionBundle:Adoption:SearchAdoptionCat }
+
+_request_adoption:
+    path:     /RequestAdoption/{id}
+    defaults: { _controller: AdoptionBundle:Adoption:RequestAdoption }
+
+_valider_request_adoption:
+    path:     /ValiderRequestAdoption/{id}
+    defaults: { _controller: AdoptionBundle:Adoption:ValiderRequestAdoption }
+
+_show_adoption_admin:
+    path:     /ShowAdoptionAdmin
+    defaults: { _controller: AdoptionBundle:Adoption:ShowAdoptionAdmin }
+
+_valider_admin:
+    path:     /ValiderAdmin/{id}
+    defaults: { _controller: AdoptionBundle:Adoption:ValiderAdmin }
+
+_search_adoption_admin:
+    path:     /SearchAdoptionAdmin
+    defaults: { _controller: AdoptionBundle:Adoption:SearchAdoptionAdmin }
+
+_show_all_admin:
+    path:     /AllAdoptionAdmin
+    defaults: { _controller: AdoptionBundle:Adoption:showAdminAll }
+
+_show_my_adoption:
+    path:     /ShowMyAdoption
+    defaults: { _controller: AdoptionBundle:Adoption:ShowMyAdoption }
+
+_search_my_adoption:
+    path:     /SearchMyAdoption
+    defaults: { _controller: AdoptionBundle:Adoption:SearchMyAdoption }
+
+_search_my_adoptioncat:
+    path:     /SearchMyAdoptioncat
+    defaults: { _controller: AdoptionBundle:Adoption:SearchMyAdoptionCat }
+
+_add_wishlist:
+    path:     /AddWishlist/{id}
+    defaults: { _controller: AdoptionBundle:WishlistAdoption:AddWishlist }
+
+_delete_wishlist:
+    path:     /DeleteWishlist/{id}
+    defaults: { _controller: AdoptionBundle:WishlistAdoption:DeleteWishlist }
+
+_show_wishlist:
+    path:     /ShowWishlist
+    defaults: { _controller: AdoptionBundle:WishlistAdoption:ShowWishlist }
+
+_read:
+    path:     /Read
+    defaults: { _controller: AdoptionBundle:Species:Read }
+
+_create_species:
+    path:     /CreateSpecies
+    defaults: { _controller: AdoptionBundle:Species:CreateSpecies }
+
+_create_sub_species:
+    path:     /CreateSubSpecies
+    defaults: { _controller: AdoptionBundle:Species:CreateSubSpecies }
+
+_delete_species:
+    path:     /deleteSpecies/{id}
+    defaults: { _controller: AdoptionBundle:Species:deleteSpecies }
+
+_update_sub_species:
+    path:     DeleteSpeciesAction
+    defaults: { _controller: AdoptionBundle:Species:UpdateSubSpecies }
+
+_delete_sub_species:
+    path:     /DeleteSubSpecies/{id}
+    defaults: { _controller: AdoptionBundle:Species:DeleteSubSpecies }

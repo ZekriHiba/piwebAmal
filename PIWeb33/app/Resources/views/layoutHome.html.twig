@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+
+<!-- Mirrored from templatevisual.com/demo/petvet/index1.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 03 Feb 2018 14:04:16 GMT -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="keywords" content="">
+    <title>{% block titre %} {% endblock %}</title>
+    {% block create %}
+    {% endblock %}
+    <link rel="shortcut icon" href="{{ asset('Client/images/favicon.ico') }}" type="image/x-icon">
+    <link rel="apple-touch-icon" href="{{ asset('Client/images/xapple-touch-icon.png.pagespeed.ic.lbIMAdR47L.png')}}"/>
+    <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('Client/images/xapple-touch-icon-57x57.png.pagespeed.ic.lbIMAdR47L.png')}}">
+    <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('Client/images/xapple-touch-icon-72x72.png.pagespeed.ic.i-0YYlpEGy.png') }}">
+    <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('Client/images/xapple-touch-icon-76x76.png.pagespeed.ic.xyE4EWNI5l.png') }}">
+    <link rel="apple-touch-icon" sizes="114x114" href="{{ asset('Client/images/xapple-touch-icon-114x114.png.pagespeed.ic.46I_5LN6hD.png') }}">
+    <link rel="apple-touch-icon" sizes="120x120" href="{{ asset('Client/images/xapple-touch-icon-120x120.png.pagespeed.ic.wZ7p39DfnJ.png') }}">
+    <link rel="apple-touch-icon" sizes="144x144" href="{{ asset('Client/images/xapple-touch-icon-144x144.png.pagespeed.ic.Zf_U5pDbrc.png') }}">
+    <link rel="apple-touch-icon" sizes="152x152" href="{{ asset('Client/images/xapple-touch-icon-152x152.png.pagespeed.ic.u_OuBhvBU5.png') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('Client/rs-plugin/css/A.settings.css.pagespeed.cf.0al2lLpEZL.css') }}" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('Client/css/A.animate.css%2bbootstrap.css%2bcarousel.css%2bprettyPhoto.css%2cMcc.4tUPWijeXQ.css.pagespeed.cf.HF3c-a8EqU.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('Client/A.style.css%2bcss%2c%2c_custom.css%2cMcc.dJXLFsuLOF.css.pagespeed.cf.UgtDm8q7vQ.css') }}"/>
+    <script src="{{ asset('Client/js/modernizer.js.pagespeed.jm.1UdTGnoJUM.js') }}"></script>
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div id="loader">
+    <div class="loader-container">
+        <img src="{{ asset('Client/images/xload.png.pagespeed.ic.kE5YiCMdt2.png') }}" alt="" class="loader-site spinner">
+    </div>
+</div>
+<div id="wrapper">
+    <div class="topbar dark clearfix">
+        <div class="container">
+            <div class="row-fluid">
+                <div class="col-md-6 text-left">
+                    <p>
+                        <strong>Call us:</strong> +70 82 82 37 &nbsp;&nbsp;
+                        <strong>Email:</strong> <a href="mailto:info@yoursite.com">zanimo@hotmail.com</a>
+                    </p>
+                </div>
+                <div class="col-md-6 text-right">
+                    <div class="social">
+                        <a href="#" data-tooltip="tooltip" data-placement="bottom" title="Facebook"><i class="fa fa-facebook"></i></a>
+                        <a href="#" data-tooltip="tooltip" data-placement="bottom" title="Twitter"><i class="fa fa-twitter"></i></a>
+                        <a href="#" data-tooltip="tooltip" data-placement="bottom" title="Google Plus"><i class="fa fa-google-plus"></i></a>
+                        <a href="#" data-tooltip="tooltip" data-placement="bottom" title="Linkedin"><i class="fa fa-linkedin"></i></a>
+                        <a href="#" data-tooltip="tooltip" data-placement="bottom" title="Youtube"><i class="fa fa-youtube"></i></a>
+                        <a href="#" data-tooltip="tooltip" data-placement="bottom" title="Pinterest"><i class="fa fa-pinterest"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        {%  if not app.user %}
+
+            {% include 'UserBundle:Default:modulesUsed/userNotC.html.twig' %}
+        {% endif %}
+        {%  if app.user %}
+
+            {% include 'UserBundle:Default:modulesUsed/userC.html.twig' %}
+
+        {% endif %}
+
+    </div>
+    <header class="header">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-md-12">
+                    <nav class="navbar navbar-default">
+                        <div class="container-fluid">
+                            <div class="navbar-table">
+                                <div class="navbar-cell tight">
+                                    <div class="navbar-header">
+
+                                        <img src="{{ asset('Client/images/logo2.png') }}" height="70px" alt="Ova">
+                                        <div>
+                                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
+                                                <span class="sr-only">Toggle navigation</span>
+                                                <span class="fa fa-bars"></span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="navbar-cell stretch">
+                                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+                                        <div class="navbar-cell">
+                                            <ul class="nav navbar-nav navbar-right">
+                                                <li><a href="{{ path('adoption_homepage') }}" >Home </a></li>
+                                                <li><a href="#">Our Vet</a></li>
+
+                                                <li class="dropdown has-submenu">
+                                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Adoptions <span class="fa fa-angle-down"></span></a>
+                                                    <ul class="dropdown-menu start-left" role="menu">
+                                                        <li><a href="{{ path('_show_adoption') }}">Adoptions</a></li>
+                                                        <li><a href="{{ path('_show_my_adoption') }}" >My Animals</a></li>
+                                                        <li><a href="{{ path('_create_adoption') }}" >Create Adoption</a></li>
+                                                        <li><a href="{{ path('_show_wishlist') }}" >My WishList</a></li>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+
+
+                                                <li class="dropdown has-submenu">
+                                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Reclamation <span class="fa fa-angle-down"></span></a>
+                                                    <ul class="dropdown-menu start-left" role="menu">
+                                                        <li><a href="#">Lost Animals</a></li>
+                                                        <li><a  href="#">Technical Reclamation</a></li>
+                                                        <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">My Lost Animals<span class="fa fa-angle-right"></span></a>
+                                                            <ul class="dropdown-menu show-left" role="menu">
+                                                                <li><a href="#" >Add Animal</a></li>
+                                                                <li><a href="#">My Animals</a></li>
+
+                                                            </ul>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+
+                                                <li><a href="{{ path('_show_product') }}">Shop</a></li>
+                                                <li><a href="#" >Blog</a></li>
+                                                <li><a href="#" >Appointment</a></li>
+                                                <li><a href="#" >Contact</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    {% block content %}
+        <div class="slider-section">
+            <div class="tp-banner-container">
+                <div class="tp-banner">
+                    <ul>
+                        <li data-transition="fade" data-slotamount="1" data-masterspeed="500" data-thumb="{{ asset('Client/upload/slider_04.jpg') }}" data-saveperformance="off" data-title="Vet">
+                            <img src="{{ asset('Client/upload/xslider_04.jpg.pagespeed.ic.ZxzBCdh6l1.jpg') }}" alt="fullslide1" data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
+                            <div class="tp-caption slider_layer_01 text-center lft tp-resizeme" data-x="center" data-y="242" data-speed="1000" data-start="600" data-easing="Power3.easeInOut" data-splitin="none" data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1" data-endspeed="1000" style="z-index: 9; max-width: auto; max-height: auto; white-space: nowrap;">Creative <strong>Team</strong>, Professional <strong>Clinic</strong>
+                            </div>
+                            <div class="tp-caption slider_layer_02 text-center lft tp-resizeme" data-x="center" data-y="335" data-speed="1000" data-start="800" data-easing="Power3.easeInOut" data-splitin="none" data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1" data-endspeed="1000" style="z-index: 9; max-width: auto; max-height: auto; white-space: nowrap;">Great Theme For Pet Shop, Veterinarian Websites with tons of options<br> custom elements and custom sections!
+                            </div>
+                            <div class="tp-caption slider_btn text-center lft tp-resizeme" data-x="center" data-y="410" data-speed="1000" data-start="1000" data-easing="Power3.easeInOut" data-splitin="none" data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1" data-endspeed="1000" style="z-index: 9; max-width: auto; max-height: auto; white-space: nowrap;"><a href="#" class="btn btn-primary">Read More</a> <a href="#" class="btn btn-default">Get It Now</a>
+                            </div>
+                        </li>
+                        <li data-transition="fade" data-slotamount="1" data-masterspeed="500" data-thumb="{{ asset('Client/upload/slider_03.jpg') }}" data-saveperformance="off" data-title="Vet">
+                            <img src="{{ asset('Client/upload/xslider_03.jpg.pagespeed.ic.1_5430mnoO.jpg') }}" alt="fullslide1" data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
+                            <div class="tp-caption slider_layer_01 text-center lft tp-resizeme" data-x="center" data-y="242" data-speed="1000" data-start="600" data-easing="Power3.easeInOut" data-splitin="none" data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1" data-endspeed="1000" style="z-index: 9; max-width: auto; max-height: auto; white-space: nowrap;">Happy Pets Happy Clients
+                            </div>
+                            <div class="tp-caption slider_layer_02 text-center lft tp-resizeme" data-x="center" data-y="335" data-speed="1000" data-start="800" data-easing="Power3.easeInOut" data-splitin="none" data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1" data-endspeed="1000" style="z-index: 9; max-width: auto; max-height: auto; white-space: nowrap;">Great Theme For Pet Shop, Veterinarian Websites with tons of options<br> custom elements and custom sections!
+                            </div>
+                            <div class="tp-caption slider_btn text-center lft tp-resizeme" data-x="center" data-y="410" data-speed="1000" data-start="1000" data-easing="Power3.easeInOut" data-splitin="none" data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1" data-endspeed="1000" style="z-index: 9; max-width: auto; max-height: auto; white-space: nowrap;"><a href="#" class="btn btn-primary">Read More</a> <a href="#" class="btn btn-default">Get It Now</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <section class="section white">
+            <div class="container">
+                <div class="row service-style-2">
+                    <div class="col-md-4 col-sm-6">
+                        <div class="wow fadeIn" data-wow-duration="1s" data-wow-delay="0.2s">
+                            <h3>Why Choose Us?</h3>
+                            <p class="lead">We’re committed to work and play our client meeting room transforms into a table tennis arena and we see our local pubs as extended meeting areas.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                        <div class="services-1 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.4s">
+                            <i class="fa fa-paw"></i>
+                            <h4>Surgical Operations</h4>
+                            <p>Odec adesterc timeam toruatos, eam debitis sententiae examles.Cure sed homerous alienum.Cu sed homero alienum lobortis</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                        <div class="services-1 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.6s">
+                            <i class="fa fa-medkit"></i>
+                            <h4>Patient Department</h4>
+                            <p>Odec adesterc timeam toruatos, eam debitis sententiae examles.Cure sed homerous alienum.Cu sed homero alienum lobortis</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                        <div class="services-1 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.8s">
+                            <i class="fa fa-ambulance"></i>
+                            <h4>Laboratory Services</h4>
+                            <p>Odec adesterc timeam toruatos, eam debitis sententiae examles.Cure sed homerous alienum.Cu sed homero alienum lobortis</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                        <div class="services-1 wow fadeIn" data-wow-duration="1s" data-wow-delay="1s">
+                            <i class="fa fa-user-md"></i>
+                            <h4>Pet Barber Service</h4>
+                            <p>Odec adesterc timeam toruatos, eam debitis sententiae examles.Cure sed homerous alienum.Cu sed homero alienum lobortis</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                        <div class="services-1 wow fadeIn" data-wow-duration="1s" data-wow-delay="1.2s">
+                            <i class="fa fa-hospital-o"></i>
+                            <h4>Hospitalisation</h4>
+                            <p>Odec adesterc timeam toruatos, eam debitis sententiae examles.Cure sed homerous alienum.Cu sed homero alienum lobortis</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section grey">
+            <div class="container">
+                <div class="general-title text-center">
+                    <h4>Meet Our Vets</h4>
+                    <hr>
+                    <p class="lead">Listed below four reasons to choose us!</p>
+                </div>
+                <div class="row module-wrapper text-left">
+                    <div class="col-md-4 col-sm-4">
+                        <div class="team-member team-square">
+                            <div class="entry">
+                                <img class="img-responsive" src="{{ asset('Client/upload/xteam_circle_01.png.pagespeed.ic.bUjjbddUk3.png') }}" alt="">
+                                <div class="magnifier">
+                                    <div class="buttons">
+                                        <a class="st" rel="bookmark" href="#"><span class="fa fa-envelope"></span></a>
+                                        <a class="st" rel="bookmark" href="#"><span class="fa fa-google-plus"></span></a>
+                                        <a class="st" rel="bookmark" href="#"><span class="fa fa-twitter"></span></a>
+                                        <a class="st" rel="bookmark" href="#"><span class="fa fa-facebook"></span></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <h4><a href="team-single.html"> Amanda Jessi <span>|</span> <small>Veterinary</small></a></h4>
+                            <p>Cras dapibus. Vivamus elementum semper Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae</p>
+                            <a href="team-single.html" class="readmore">Read more</a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4">
+                        <div class="team-member team-square">
+                            <div class="entry">
+                                <img class="img-responsive" src="{{ asset('Client/upload/xteam_circle_02.png.pagespeed.ic.EJ1G0FGfp_.png') }}" alt="">
+                                <div class="magnifier">
+                                    <div class="buttons">
+                                        <a class="st" rel="bookmark" href="#"><span class="fa fa-envelope"></span></a>
+                                        <a class="st" rel="bookmark" href="#"><span class="fa fa-google-plus"></span></a>
+                                        <a class="st" rel="bookmark" href="#"><span class="fa fa-twitter"></span></a>
+                                        <a class="st" rel="bookmark" href="#"><span class="fa fa-facebook"></span></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <h4><a href="team-single.html"> Sarah GODDNES <span>|</span> <small>Veterinary</small></a></h4>
+                            <p>Cras dapibus. Vivamus elementum semper Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae</p>
+                            <a href="team-single.html" class="readmore">Read more</a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4">
+                        <div class="team-member team-square">
+                            <div class="entry">
+                                <img class="img-responsive" src="{{ asset('Client/upload/xteam_circle_03.png.pagespeed.ic.SbrCGVEy5K.png') }}" alt="">
+                                <div class="magnifier">
+                                    <div class="buttons">
+                                        <a class="st" rel="bookmark" href="#"><span class="fa fa-envelope"></span></a>
+                                        <a class="st" rel="bookmark" href="#"><span class="fa fa-google-plus"></span></a>
+                                        <a class="st" rel="bookmark" href="#"><span class="fa fa-twitter"></span></a>
+                                        <a class="st" rel="bookmark" href="#"><span class="fa fa-facebook"></span></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <h4><a href="team-single.html"> Jenny DOE <span>|</span> <small>Veterinary</small></a></h4>
+                            <p>Cras dapibus. Vivamus elementum semper Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae</p>
+                            <a href="team-single.html" class="readmore">Read more</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section white">
+            <div class="container">
+                <div class="general-title text-center">
+                    <h4>Testimonials</h4>
+                    <hr>
+                    <p class="lead">Listed below four reasons to choose us!</p>
+                </div>
+                <div class='row'>
+                    <div class='col-md-offset-2 col-md-8'>
+                        <div class="carousel slide" data-ride="carousel" id="quote-carousel">
+                            <ol class="carousel-indicators">
+                                <li data-target="#quote-carousel" data-slide-to="0" class="active"></li>
+                                <li data-target="#quote-carousel" data-slide-to="1"></li>
+                                <li data-target="#quote-carousel" data-slide-to="2"></li>
+                            </ol>
+                            <div class="carousel-inner">
+                                <div class="item active">
+                                    <blockquote>
+                                        <div class="row">
+                                            <div class="col-sm-3 text-center">
+                                                <img class="img-circle" src="{{ asset('Client/upload/xteam_circle_03.png.pagespeed.ic.SbrCGVEy5K.png') }}" alt="">
+                                            </div>
+                                            <div class="col-sm-9">
+                                                <p>Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit!</p>
+                                                <small>Someone famous</small>
+                                            </div>
+                                        </div>
+                                    </blockquote>
+                                </div>
+                                <div class="item">
+                                    <blockquote>
+                                        <div class="row">
+                                            <div class="col-sm-3 text-center">
+                                                <img class="img-circle" src="{{ asset('Client/upload/xteam_circle_02.png.pagespeed.ic.EJ1G0FGfp_.png') }}" alt="">
+                                            </div>
+                                            <div class="col-sm-9">
+                                                <p>Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit!</p>
+                                                <small>Someone famous</small>
+                                            </div>
+                                        </div>
+                                    </blockquote>
+                                </div>
+                                <div class="item">
+                                    <blockquote>
+                                        <div class="row">
+                                            <div class="col-sm-3 text-center">
+                                                <img class="img-circle" src="{{ asset('Client/upload/xteam_circle_01.png.pagespeed.ic.bUjjbddUk3.png') }}" alt="">
+                                            </div>
+                                            <div class="col-sm-9">
+                                                <p>Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit!</p>
+                                                <small>Someone famous</small>
+                                            </div>
+                                        </div>
+                                    </blockquote>
+                                </div>
+                                <a data-slide="prev" href="#quote-carousel" class="left carousel-control"><i class="fa fa-chevron-left"></i></a>
+                                <a data-slide="next" href="#quote-carousel" class="right carousel-control"><i class="fa fa-chevron-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="callout-section dark-yellow">
+            <div class="container">
+                <div class="row callout">
+                    <div class="col-md-9">
+                        <h3>Interesting our works and services?</h3>
+                        <p class="lead">The standard chunk of Lorem Ipsu from "de Finibus Bonorum et Malorum" by Cicero are also reproduced<br> in their exact original form, accompanied. Donec id elit non mi porta gravida at eget metus.</p>
+                    </div>
+                    <div class="col-md-3">
+                        <a href="#" class="btn btn-default btn-block btn-lg">Appointment Now</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    {% endblock %}
+    <footer class="footer dark">
+        <div class="container">
+            <div class="row module-wrapper">
+                <div class="col-md-4 col-sm-6"  style="position: center ; left: 100px; " >
+                    <div class="widget">
+                        <div class="text-center">
+                            <img src="{{ asset('Client/images/3.png') }}" style="width: 250px;height: 250px ;" alt="" class="img-responsive">
+                            <p>Perfection.</p>
+                            <div class="social">
+                                <a href="#" data-tooltip="tooltip" data-placement="bottom" title="Facebook"><i class="fa fa-facebook"></i></a>
+                                <a href="#" data-tooltip="tooltip" data-placement="bottom" title="Twitter"><i class="fa fa-twitter"></i></a>
+                                <a href="#" data-tooltip="tooltip" data-placement="bottom" title="Pinterest"><i class="fa fa-pinterest"></i></a>
+                                <a href="#" data-tooltip="tooltip" data-placement="bottom" title="Youtube"><i class="fa fa-youtube"></i></a>
+                                <a href="#" data-tooltip="tooltip" data-placement="bottom" title="Github"><i class="fa fa-github"></i></a>
+                                <a href="#" data-tooltip="tooltip" data-placement="bottom" title="MaxCDN"><i class="fa fa-maxcdn"></i></a>
+                                <a href="#" data-tooltip="tooltip" data-placement="bottom" title="Google Plus"><i class="fa fa-google-plus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6" style="position: center ; left: 500px">
+                    <div class="widget">
+                        <div class="widget-title">
+                            <h4>Contact Details</h4>
+                        </div>
+                        <ul>
+                            <li><i class="fa fa-link"></i> www.zanimo.com</li>
+                            <li><i class="fa fa-envelope"></i> info@zanimo.com</li>
+                            <li><i class="fa fa-phone"></i> +70 82 82 37</li>
+                            <li><i class="fa fa-fax"></i> +70 82 82 37</li>
+                            <li><i class="fa fa-home"></i> menzah5 Tunis.</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+</div>
+<script src="{{ asset('Client/js/jquery.min.js.pagespeed.jm.J-8M9bCq0j.js') }}"></script>
+
+<script src="{{ asset('client/js/bootstrap-select.js.pagespeed.jm.1opnvzpd-H.js') }}"></script>
+<script src="{{ asset('client/js/jquery-ui.js.pagespeed.jm.k0eOq83zB0.js') }}"></script>
+<script src="{{ asset('client/js/jquery-ui-timepicker-addon.js.pagespeed.jm.XhamyIycA9.js') }}"></script>
+<script type="text/javascript">$(function(){$('.selectpicker').selectpicker;$("#datepicker").datepicker();});</script>
+<script src="{{ asset('Client/js/bootstrap.js%2bretina.js%2bwow.js.pagespeed.jc.isTtwS3BRA.js') }}"></script><script>eval(mod_pagespeed_QVjN9VLU9A);</script>
+<script>eval(mod_pagespeed_MEsUxamUni);</script>
+<script>eval(mod_pagespeed_0bkPwSHufl);</script>
+<script src="{{ asset('Client/js/jquery.simple-text-rotator.js%2bparallax.js%2btouch.js%2bcarousel.js.pagespeed.jc.HG-aMDAZDl.js') }}"></script><script>eval(mod_pagespeed_07fmU$$RNq);</script>
+<script>eval(mod_pagespeed_XKKesQfpp0);</script>
+<script>eval(mod_pagespeed_z83SFsIgz$);</script>
+<script>eval(mod_pagespeed_WBv_OkcQEu);</script>
+<script>//<![CDATA[
+    (function($){"use strict";$(window).load(function(){$('#loader').delay(300).fadeOut('slow');$('#loader-container').delay(200).fadeOut('slow');$('body').delay(300).css({'overflow':'visible'});})
+        new WOW({boxClass:'wow',animateClass:'animated',offset:0,mobile:true,live:true}).init();$('body').tooltip({selector:"[data-tooltip=tooltip]",container:"body"});$('#owl-team').owlCarousel({loop:true,margin:30,nav:true,dots:false,responsive:{0:{items:1},600:{items:2},1000:{items:4}}})
+        $(".rotate").textrotator({animation:"fade",speed:1000});function toggleChevron(e){$(e.target).prev('.panel-heading').find("i.indicator").toggleClass('fa-minus fa-plus');}$('#accordion').bind('hidden.bs.collapse',toggleChevron);$('#accordion').bind('shown.bs.collapse',toggleChevron);$(".js-height-full").height($(window).height());$(".js-height-parent").each(function(){$(this).height($(this).parent().first().height());});$('#quote-carousel').carousel({pause:true,interval:4000,});})(jQuery);
+    //]]></script>
+<script src="{{ asset('Client/rs-plugin/js/jquery.themepunch.tools.min.js.pagespeed.jm.0PLSBOOLZa.js') }}"></script>
+<script src="{{ asset('Client/rs-plugin/js/jquery.themepunch.revolution.min.js') }}"></script>
+<script>jQuery(document).ready(function(){jQuery('.tp-banner').show().revolution({dottedOverlay:"none",delay:16000,startwidth:1170,startheight:620,hideThumbs:200,thumbWidth:100,thumbHeight:50,thumbAmount:5,navigationType:"none",navigationArrows:"solo",navigationStyle:"preview2",touchenabled:"on",onHoverStop:"on",swipe_velocity:0.7,swipe_min_touches:1,swipe_max_touches:1,drag_block_vertical:false,parallax:"mouse",parallaxBgFreeze:"on",parallaxLevels:[10,7,4,3,2,5,4,3,2,1],parallaxDisableOnMobile:"off",keyboardNavigation:"off",navigationHAlign:"center",navigationVAlign:"bottom",navigationHOffset:0,navigationVOffset:20,soloArrowLeftHalign:"left",soloArrowLeftValign:"center",soloArrowLeftHOffset:20,soloArrowLeftVOffset:0,soloArrowRightHalign:"right",soloArrowRightValign:"center",soloArrowRightHOffset:20,soloArrowRightVOffset:0,shadow:0,fullWidth:"on",fullScreen:"off",spinner:"spinner4",stopLoop:"off",stopAfterLoops:-1,stopAtSlide:-1,shuffle:"off",autoHeight:"off",forceFullWidth:"off",hideThumbsOnMobile:"off",hideNavDelayOnMobile:1500,hideBulletsOnMobile:"off",hideArrowsOnMobile:"off",hideThumbsUnderResolution:0,hideSliderAtLimit:0,hideCaptionAtLimit:0,hideAllCaptionAtLilmit:0,startWithSlide:0,fullScreenOffsetContainer:""});});</script>
+<script src="{{ asset('Client/js/isotope.js%2bimagesloaded.pkgd.js%2bmasonry-home.js.pagespeed.jc.EX7bEchBDS.js') }}"></script><script>eval(mod_pagespeed_YcVa$fbfkw);</script>
+<script>eval(mod_pagespeed_Gwt_ksvJv3);</script>
+<script>eval(mod_pagespeed_dDE9Gg_N1Z);</script>
+<script src="{{ asset('Client/js/jquery.prettyPhoto.js.pagespeed.jm.GgHqBAATyP.js') }}"></script>
+<script type="text/javascript">(function($){"use strict";jQuery('a[data-gal]').each(function(){jQuery(this).attr('rel',jQuery(this).data('gal'));});jQuery("a[data-rel^='prettyPhoto']").prettyPhoto({animationSpeed:'slow',theme:'light_square',slideshow:true,overlay_gallery:true,social_tools:false,deeplinking:false});})(jQuery);</script>
+</body>
+
+<!-- Mirrored from templatevisual.com/demo/petvet/index1.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 03 Feb 2018 14:04:16 GMT -->
+</html>

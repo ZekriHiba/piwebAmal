@@ -1,0 +1,186 @@
+
+{% extends "::layoutHome.html.twig" %}
+
+{% block titre %}AdoptionBundle:Adoption:UpdateAdoption{% endblock %}
+
+{% block content %}
+
+
+<div class="page-title grey">
+    <div class="container">
+        <div class="title-area pull-left">
+            <h2>Adoptions <small>You may search for any category here.</small></h2>
+            <div class="bread">
+                <ol class="breadcrumb">
+                    <li><a href="#">Home</a></li>
+                    <li class="active">Adoption</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+<section class="section white">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1 col-xs-10">
+                <div class="appoform-wrapper">
+                    <form method="POST" action="{{ path('_update_adoption',{'id':z.idAnimal}) }}">
+                        <header class="form-header">
+                            <h3>Adoption Form</h3>
+                        </header>
+                        <div class="post-body-form text-center">
+                            <p id="pp" >In order to provide better service to you, PetVet<br>
+                                It is working with the apdoption system. Please fill in the following form completely.</p>
+                        </div>
+                        <fieldset class="row-fluid appoform">
+                            <div class="col-md-6">
+                                <label>Catégorie : *</label>
+                                <select id="select1"  style="margin: 10px; padding: 10px;border: 2px solid orange;width: 200px;-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px;" required>
+                                    <option value="" style="background:darkorange;">--select catégorie--</option>
+                                    {% for c in catg %}
+                                        <option id="opt" {% if z.sSpeciesId.speciesId.name == c.name %}selected{% endif %}
+                                                style="background-color: white;color: orange;width: 310px;padding: 10px 15px;height: 20px;cursor: pointer;">{{ c.name }}</option>
+                                    {% endfor %}</select>
+                            </div>
+                            <div class="col-md-6">
+                                <label>Sous catégorie : *</label>
+                                <select id="scatg" name="scatg" data-style="btn-white"
+                                        style="margin: 10px; padding: 10px;border: 2px solid orange;width: 200px;-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px;" required>
+                                    {% for c in scatt %}
+                                        <option id="opt1" style="background-color: white;color: orange;width: 310px;padding: 10px 15px;height: 20px;cursor: pointer;"
+                                                {% if z.sSpeciesId.name == c.name %}selected{% endif %}>{{ c.name }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="col-md-6"><br>
+                                <label class="sr-only">Nickname *</label>
+                                <input type="text" name="nickname" id="nickname" placeholder="Nick Name" value="{{ z.nickName }}" class="form-control" required>
+                            </div>
+                            <div class="col-md-6"><br>
+                                <label class="sr-only">Taille</label>
+                                <input type="number" name="taille" id="taille" placeholder="La taille de votre zanimo" value="{{ z.size }}" class="form-control" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="sr-only">Poids</label>
+                                <input type="number" name="poids" id="poids" placeholder="Le poids de votre zanimo" value="{{ z.weight }}" class="form-control" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="sr-only">Couleur</label>
+                                <input type="text" name="couleur" id="couleur" placeholder="couleur" value="{{ z.color }}" class="form-control" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="sr-only">Select sexe</label>
+                                <select name="sexe" id="sexe" class="selectpicker" data-style="btn-white" required>
+                                    <option  selected>-- Sexe --</option>
+                                    <option value="Femelle" {% if z.gender == "Femelle" %}selected{% endif %}>Femelle</option>
+                                    <option value="Male" {% if z.gender == "Male" %}selected{% endif %}>Male</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="sr-only">Age</label>
+                                <input id="datepicker" value="{{ z.age | date }}" type="text" name="age" id="age"
+                                       placeholder="Age" class="form-control" required>
+                            </div>
+                            <div class="col-md-12">
+                                <label class="sr-only" >Description</label>
+                                <textarea placeholder="Add extra notes" name="description" id="description" class="form-control" required>{{ z.description }}</textarea>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="sr-only">Image</label>
+                                <input id="imagee" name="image" type="file" placeholder="Image" class="form-control" value="{{ z.image }}">
+                                <img id="imgs" style='border-radius:100%; width: 300px; height: 300px;' src="{{ asset('client/upload/'~z.image) }}" >
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <table id="cart-table" class="table table-condensed">
+                                    <thead>
+                                    <tr>
+                                        <th>Action</th>
+                                        <th>Image</th><p id="imgg" name="imgg"></p>
+                                    </tr>
+                                    </thead>
+                                    <tbody id ="img1">
+                                    <tr><th class='product-remove'><a class='remove' id="removee" href='#'>×</a>
+                                        </th><td id="tr"></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <br>
+                            <div class="col-md-12">
+                                <button type="submit" name="edit" class="btn btn-primary btn-block btn-lg">Editer</button>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</div>
+<script src="{{ asset("client/jquery-3.2.1.min.js") }}"></script>
+<script>
+
+    $('#select1').change( function() {
+
+        var opt= $("#select1").val();
+        var DATA = {'opt':opt};
+        $.ajax({
+            type: "POST",
+            url: "{{ path('_update_adoption',{'id':z.idAnimal}) }}",
+            data: DATA,
+            success: function (data) {
+                $('#scatg').empty();
+                $.each(data, function (k,catgN) {
+                    console.log('z.sSpeciesId.name');
+                    console.log({{ z.idAnimal }});
+                    if (catgN.name != $('#n').val() )
+                    {$('#scatg').append($('<option style="background-color: white;\n' +
+                        '\tcolor: orange;\n' +
+                        '\twidth: 310px;\n' +
+                        '\tpadding: 10px 15px;\n' +
+                        '\theight: 20px;\n' +
+                        '\tcursor: pointer;"></option>')
+                        .attr('value', catgN.name)
+                        .text(catgN.name)
+                        .prop('selected',false)).change();
+                        $('#scatg').append("<p>"+catgN.name+"</p>");}
+                });
+
+            }
+        });
+    });
+
+    $('#imagee').change(function () {
+        var i=0;
+        var x="{{ asset('Client/upload/') }}";
+
+        var j="";
+        var y="";
+        while (i<$('#imagee').val().length)
+        {
+            i++;
+
+            if(i>11 && i<$('#imagee').val().length)
+            {
+                y=$('#imagee').val()[i];
+
+                j=j+y;
+
+            }
+
+        }
+
+        $('#imgs').remove();
+        $('#tr').empty();
+        $('#tr').append("<td id='dd'>" +
+            "<img id='imm' style='border-radius:100%; width: 300px; height: 300px;' src=" +x+j +"></td>");});
+
+    $('#removee').click(function () {
+        $('#tr').empty();
+    });
+</script>
+{% endblock %}
+
+{% block create %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('client/css/animate.css%2bbootstrap.css%2bcarousel.css%2bbootstrap-select.css%2bjquery-ui.css.pagespeed.cc.M6_eiQhCjV.css') }}"/>
+{% endblock %}

@@ -1,0 +1,57 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<section id="comingsoon" class="fullscreen paralbackground parallax" style="background-image:url({{ asset('Client/upload/xparallax_01.jpg.pagespeed.ic.bbBOmU960x.jpg') }})" data-img-width="1922" data-img-height="795" data-diff="100">
+    <div class="js-height-full">
+        <div class="home-text-wrapper container">
+            <div class="home-message">
+
+
+                <div class="newsletter">
+                    <style>
+                        label{
+                            color: white;
+                        }
+
+                        input{
+                            background-color: #f6ecd5;
+                            border-radius: 5px;
+                            padding: 5px;
+                        }
+                        table{
+                            border-collapse: separate;
+                            border-spacing: 15px 20px;
+                        }
+                        tr{
+                            margin-right: auto;
+                        }
+                        p{
+                            padding-top: 10px;
+                        }
+
+                    </style>
+                    {{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
+                    <table style="width: 600px ;margin: auto;">
+                        <tr>
+                            <td style=""><label>Email : *</label>{{ form_widget(form.email) }}</td>
+                        </tr>
+                        <tr>
+                            <td style=""><label>Username : *</label>{{ form_widget(form.username) }}</td>
+                        </tr >
+                        <tr>
+                            <td> {{ form_widget(form) }}</td>
+                        </tr>
+                    </table>
+
+                    <center>  <div>
+                            <br>
+                            <br>
+                            <input type="submit" style="padding-bottom: 3" class="btn btn-normal btn-primary" value="{{ 'profile.edit.submit'|trans }}" />
+                            <br>
+                            <br>
+                        </div></center>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
